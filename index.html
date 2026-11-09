@@ -1,0 +1,1630 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fair share challenge (Copy)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F3F7; --surface:#FFFFFF; --ink:#18202F; --on-ink:#FFFFFF; --muted:#5B6476;
+  --line:#D6DCE6; --track:#E3E7EE; --focus:#2F6FEB; --danger:#B42318;
+  --pa:#5457C8; --pb:#E09A2B;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --hdr:52px;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10141B; --surface:#19202A; --ink:#E8ECF3; --on-ink:#10141B; --muted:#9AA3B3;
+    --line:#2C3441; --track:#252C38; --focus:#86ACFF; --danger:#F29C94;
+    --pa:#8B8EF5; --pb:#F0B24A;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10141B; --surface:#19202A; --ink:#E8ECF3; --on-ink:#10141B; --muted:#9AA3B3;
+  --line:#2C3441; --track:#252C38; --focus:#86ACFF; --danger:#F29C94;
+  --pa:#8B8EF5; --pb:#F0B24A;
+  color-scheme:dark;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr) + 12px)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.55 var(--body);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:38rem;margin:0 auto;padding:13px 20px 11px}
+.brand{font:600 .95rem/1.2 var(--display);letter-spacing:-.01em}
+.progress{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.progress .bar{display:block;height:4px;border-radius:2px;background:var(--track)}
+.progress .is-done .bar,.progress .is-current .bar{background:var(--ink)}
+.progress .lbl{display:block;font-size:.78rem;color:var(--muted);margin-top:5px;line-height:1.25}
+.progress .is-current .lbl{color:var(--ink);font-weight:600}
+.storage-warn{max-width:38rem;margin:12px auto 0;padding:10px 14px;border-radius:12px;background:color-mix(in srgb,var(--danger) 12%,var(--surface));color:var(--ink);font-size:.9rem}
+
+/* Page */
+.wrap{max-width:38rem;margin:0 auto;padding:28px 20px 72px}
+body.pad-bottom .wrap{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+h1{font:650 clamp(1.8rem,5.6vw,2.3rem)/1.08 var(--display);letter-spacing:-.02em;margin:0 0 10px}
+h1.display{font-size:clamp(2.5rem,9.5vw,3.6rem);line-height:1.02;letter-spacing:-.03em;margin-bottom:16px;max-width:11ch}
+h1:focus{outline:none}
+h2{font:600 1.2rem/1.3 var(--display);letter-spacing:-.01em;margin:0 0 12px}
+.lede{color:var(--muted);margin:0 0 24px;font-size:1.05rem;max-width:34em}
+.lede b,.lede strong{color:var(--ink);font-weight:600}
+.help{margin:-4px 0 12px;color:var(--muted);font-size:.9rem}
+.section{margin:0 0 34px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;margin:0 0 24px}
+.card > h2{margin-bottom:8px}
+.card p{margin:0 0 12px}
+.card p:last-child{margin-bottom:0}
+.headline{font:650 clamp(1.45rem,4.6vw,1.8rem)/1.2 var(--display);letter-spacing:-.015em;margin:0 0 18px}
+.insight{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:12px;padding:12px 14px;margin:18px 0 0}
+.insight b{font-weight:650}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;flex:none;background:var(--me,var(--ink))}
+.dot.pa{background:var(--pa)} .dot.pb{background:var(--pb)}
+
+/* Buttons */
+.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}
+.actions.start{justify-content:flex-start;flex-wrap:wrap}
+.btn{font:600 1rem/1.2 var(--body);border-radius:12px;min-height:50px;padding:12px 22px;cursor:pointer;border:1.5px solid transparent;color:var(--ink);background:none}
+.btn.primary{background:var(--ink);color:var(--on-ink)}
+.btn.ghost{border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn.small{min-height:40px;padding:8px 14px;font-size:.92rem;border-radius:10px}
+.btn.link{border:0;color:var(--muted);padding:10px 2px;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+.btn.back{margin:-12px 0 6px}
+.btn.danger{color:var(--danger);border-color:color-mix(in srgb,var(--danger) 45%,var(--line))}
+.btn:focus-visible,.step:focus-visible,.cell:focus-visible,.tab:focus-visible,summary:focus-visible,textarea:focus-visible,input.text:focus-visible,input[type=range]:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+/* Form bits */
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.q{margin:0 0 28px}
+legend,.legend{display:flex;align-items:center;gap:8px;font-weight:600;font-size:1.05rem;line-height:1.35;margin:0 0 10px;padding:0}
+.opt{font-weight:400;color:var(--muted);font-size:.875rem}
+.q.invalid > legend,.q.invalid > .legend{color:var(--danger)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);font-weight:500;line-height:1.25;transition:background-color .15s,border-color .15s,color .15s}
+.chip:hover span{border-color:var(--muted)}
+.chip input:checked + span{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.chip input:focus-visible + span{outline:2px solid var(--focus);outline-offset:2px}
+input.text,textarea{display:block;width:100%;font:1rem/1.5 var(--body);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px}
+input.text{font-size:1.1rem;min-height:52px}
+textarea{resize:vertical}
+.select-wrap{position:relative;display:block}
+.select-wrap::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+select.select{display:block;width:100%;font:1rem/1.4 var(--body);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:12px;min-height:52px;padding:12px 44px 12px 14px;appearance:none;-webkit-appearance:none;cursor:pointer}
+select.select:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.q.invalid select.select{border-color:var(--danger)}
+.sub-h{display:flex;align-items:center;gap:9px;font:600 1.05rem/1.3 var(--display);margin:22px 0 14px}
+.sub-h:first-of-type{margin-top:4px}
+.error{color:var(--danger);font-weight:500;margin:0 0 12px}
+.error:empty{display:none}
+.note-ok{color:var(--muted);font-size:.9rem;margin:8px 0 0}
+.note-ok:empty{display:none}
+
+/* Split bars: the signature element */
+.split{position:relative;display:block;height:12px;border-radius:6px;background:var(--pb);overflow:hidden}
+.split i{display:block;height:100%;background:var(--pa);box-shadow:2px 0 0 var(--surface)}
+.split.big{height:26px;border-radius:9px}
+.split.empty{background:var(--track)}
+.split.empty i{display:none}
+.duo-top,.duo-bottom{display:flex;justify-content:space-between;gap:12px}
+.duo-top{margin-bottom:8px;font-weight:500}
+.duo-top .who{display:inline-flex;align-items:center;gap:7px}
+.duo-top b{font:650 1.15rem var(--display);font-variant-numeric:tabular-nums}
+.duo.big .duo-top b{font-size:1.6rem}
+.duo-bottom{margin-top:6px;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.banner .split i,.reveal .split i{animation:reveal .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes reveal{from{width:50%}}
+
+/* 30-day grid */
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.weeks{display:grid;gap:18px}
+.wk-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 8px;min-height:36px}
+.wk-label{font-weight:600;font-size:.95rem}
+.wk-label small{font-weight:400;color:var(--muted);font-size:.82rem;margin-left:8px}
+.wk-btn{font:600 .85rem/1.2 var(--body);color:var(--on-ink);background:var(--ink);border:0;border-radius:999px;padding:8px 14px;min-height:36px;cursor:pointer;white-space:nowrap}
+.wk-btn.seen{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.wk-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wk-note{font-size:.82rem;color:var(--muted);text-align:right}
+.cell{aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;align-items:stretch;padding:6px;border-radius:11px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:600 .85rem/1 var(--body);font-variant-numeric:tabular-nums;cursor:pointer;text-align:left}
+.cell:hover:not(:disabled){border-color:var(--muted)}
+.cell.future{background:transparent;border-style:dashed;color:var(--muted);cursor:default}
+.cell.today{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.cell-bar{display:block;height:9px;border-radius:5px;background:var(--pb);overflow:hidden}
+.cell-bar i{display:block;height:100%;background:var(--pa);box-shadow:1.5px 0 0 var(--surface)}
+.cell-dots{display:flex;gap:4px}
+.cell-dots i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--line)}
+.cell-dots i.pa.on{background:var(--pa);border-color:var(--pa)}
+.cell-dots i.pb.on{background:var(--pb);border-color:var(--pb)}
+.grid-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;font-size:.85rem;color:var(--muted)}
+.grid-key span{display:inline-flex;align-items:center;gap:7px}
+.key-bar{display:inline-block;width:26px;height:9px;border-radius:5px;background:linear-gradient(90deg,var(--pa) 0 60%,var(--pb) 60%)}
+.key-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--pa)}
+
+/* People rows */
+.people{list-style:none;margin:0;padding:0}
+.people li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.people li:first-child{border-top:0;padding-top:0}
+.people li:last-child{padding-bottom:0}
+.who{display:inline-flex;align-items:center;gap:10px;min-width:0}
+.who b{display:block;font-weight:600}
+.who small{display:block;color:var(--muted);font-size:.85rem}
+.nudge{font-size:.92rem;color:var(--muted);margin:14px 0 0}
+.nudge .btn.link{padding:0 2px;min-height:0;color:var(--ink)}
+
+/* Banner */
+.banner{border-radius:16px;padding:16px;margin:0 0 22px;background:var(--surface);border:1.5px solid var(--ink)}
+.banner p{margin:0 0 12px}
+.banner p:last-child{margin:0}
+.banner .btn.link{margin-top:6px}
+
+/* Log screen */
+.log-head{display:flex;align-items:center;gap:9px;color:var(--muted);font-weight:500;margin:0 0 6px}
+.log-head .dot{width:14px;height:14px}
+.group{margin:0 0 26px}
+.group h2{font-size:1.1rem;margin-bottom:8px}
+.rows{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.row{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 10px 12px 16px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row.has-time::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:4px;border-radius:0 4px 4px 0;background:var(--me)}
+.row-label{display:block;font-weight:600;line-height:1.3}
+.row-hint{display:block;font-size:.82rem;color:var(--muted);line-height:1.35;margin-top:1px}
+.stepper{display:flex;align-items:center;gap:2px;flex:none}
+.step{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:500 1.3rem/1 var(--body);cursor:pointer;display:grid;place-items:center;padding:0}
+.step:hover:not(:disabled){border-color:var(--muted)}
+.step:disabled{opacity:.35;cursor:default}
+.step-val{min-width:4.9rem;text-align:center;font-variant-numeric:tabular-nums;font-weight:600;color:var(--muted);font-size:.9rem}
+.row.has-time .step-val{color:var(--ink)}
+.copy-last{margin:0 0 24px}
+.savebar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px))}
+.savebar-inner{max-width:38rem;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.savebar-total span{display:block;font-size:.8rem;color:var(--muted);line-height:1.2}
+.savebar-total strong{display:block;font:650 1.35rem/1.2 var(--display);font-variant-numeric:tabular-nums}
+.savebar-warn{max-width:38rem;margin:0 auto 8px;padding:0 20px;color:var(--danger);font-size:.85rem;font-weight:500}
+.savebar-warn:empty{display:none}
+
+/* Setup */
+.guess{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 18px 16px;margin:0 0 24px}
+.guess-val{display:block;font:650 3.4rem/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-bottom:14px}
+.guess input[type=range]{width:100%;height:36px;margin:6px 0 2px;accent-color:var(--me);cursor:pointer}
+.guess-scale{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted)}
+.guess .split{margin-top:14px}
+.handoff{text-align:left;padding-top:4vh}
+.handoff .dot{width:56px;height:56px;margin-bottom:22px}
+.plain-list{margin:0;padding-left:1.1em}
+.plain-list li{margin:0 0 8px}
+.plain-list li:last-child{margin:0}
+
+/* Welcome */
+figure.demo{margin:28px 0 28px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px}
+figure.demo .grid{pointer-events:none}
+figure.demo figcaption{font-size:.9rem;color:var(--muted);margin-top:12px}
+ol.plan{list-style:none;counter-reset:s;padding:0;margin:0 0 26px;display:grid;gap:14px}
+ol.plan li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;column-gap:12px;align-items:center}
+ol.plan li::before{content:counter(s);grid-row:span 2;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font:600 .8rem var(--body);color:var(--muted)}
+ol.plan strong{font-weight:600;line-height:1.3}
+ol.plan span{color:var(--muted);font-size:.9rem;line-height:1.35}
+.fine{font-size:.9rem;color:var(--muted);margin:0 0 20px}
+
+/* Results */
+.cmp-list{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.cmp-label{display:block;font-weight:600;margin-bottom:6px}
+.legend-row{display:flex;gap:18px;font-size:.9rem;margin:-4px 0 14px;color:var(--muted)}
+.legend-row span{display:inline-flex;align-items:center;gap:7px}
+.guesses{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.guesses li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
+.guesses .who{margin-bottom:6px}
+.guesses p{margin:0}
+.days{position:relative;display:grid;grid-template-columns:repeat(30,minmax(0,1fr));gap:3px;height:130px}
+.days::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:1.5px dashed var(--surface);pointer-events:none}
+.col{display:flex;flex-direction:column;height:100%;border-radius:3px;overflow:hidden;background:var(--track)}
+.col i{display:block;width:100%}
+.col .a{background:var(--pa)} .col .b{background:var(--pb)}
+.days-axis{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-top:6px}
+.ml{list-style:none;margin:0;padding:0}
+.ml li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line)}
+.ml li:first-child{border-top:0}
+.ml-who{display:inline-flex;align-items:center;gap:6px;color:var(--muted);white-space:nowrap}
+.feel{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.feel li{display:flex;align-items:flex-start;gap:10px}
+.feel .dot{margin-top:6px}
+.quote{margin:0 0 10px;padding:10px 14px;border-left:3px solid var(--me);background:var(--surface);border-radius:0 10px 10px 0}
+.quote b{display:block;font-size:.85rem;color:var(--muted);font-weight:500}
+details.data{margin:10px 0 0;border-top:1px solid var(--line);padding-top:14px}
+details.data summary{cursor:pointer;color:var(--muted);font-weight:500}
+details.data pre{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;font:.78rem/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;max-height:340px;margin:12px 0 0}
+.empty-note{color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:16px;margin:0 0 24px}
+@media (min-width:600px){.cell{aspect-ratio:auto;height:62px}}
+.sub{margin-top:16px;padding-left:14px;border-left:2px solid var(--line)}
+.sub .q{margin:0 0 18px}
+.sub .q:last-child{margin:0}
+.sub legend{font-size:.98rem}
+.ready-card{border:1.5px solid var(--ink);background:linear-gradient(90deg,var(--pa) 50%,var(--pb) 50%) top/100% 6px no-repeat,var(--surface);padding-top:22px}
+.ready-card h2{font-size:1.3rem;margin-bottom:6px}
+.eyebrow{font-size:.82rem;font-weight:600;color:var(--muted);margin:0 0 4px !important}
+.hl{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.hl li{padding:12px 16px;border-top:1px solid var(--line)}
+.hl li:first-child{border-top:0}
+.hl b{display:block;font-size:.82rem;color:var(--muted);font-weight:600;margin-bottom:2px}
+.avg{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.avg th,.avg td{padding:10px 0 10px 12px;border-top:1px solid var(--line);text-align:right;font-weight:600;white-space:nowrap}
+.avg thead th{border-top:0;padding-top:0;font-size:.92rem}
+.avg th:first-child{text-align:left;font-weight:500;color:var(--muted);padding-left:0;white-space:normal}
+.avg thead .who{justify-content:flex-end;gap:6px}
+.sums{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.sums li + li{border-top:1px solid var(--line)}
+.sum{position:relative;display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px;padding:12px 40px 12px 16px;min-height:58px;background:none;border:0;color:var(--ink);font:inherit;text-align:left}
+button.sum{cursor:pointer}
+button.sum:hover{background:color-mix(in srgb,var(--ink) 5%,transparent)}
+button.sum::after{content:"";position:absolute;right:18px;top:50%;width:7px;height:7px;border-right:2px solid var(--muted);border-top:2px solid var(--muted);transform:translateY(-50%) rotate(45deg)}
+button.sum:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.sum.off{color:var(--muted);padding-right:16px}
+.sum-l b{display:block;font-weight:600}
+.sum-l small{display:block;font-size:.82rem;color:var(--muted)}
+.sum-r{display:inline-flex;align-items:center;gap:10px;font-variant-numeric:tabular-nums;font-size:.9rem;font-weight:600;white-space:nowrap}
+.split.mini{width:64px;height:8px;border-radius:4px}
+.days-labels{display:grid;margin-top:6px;font-size:.78rem;color:var(--muted);text-align:center}
+.wk-nav{display:flex;justify-content:space-between;gap:12px;margin-top:8px}
+.wk-nav .btn{flex:0 1 auto}
+
+/* Tab bar */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar-inner{max-width:38rem;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.tab{position:relative;font:600 .92rem var(--body);color:var(--muted);background:none;border:0;min-height:58px;cursor:pointer}
+.tab[aria-current="page"]{color:var(--ink)}
+.tab[aria-current="page"]::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--ink)}
+
+@media (max-width:520px){
+  .wrap{padding:24px 16px 72px}
+  .top-inner{padding:12px 16px 10px}
+  .savebar-inner,.savebar-warn{padding:0 16px}
+  .row{padding-left:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .banner .split i,.reveal .split i{animation:none}
+  *{transition:none !important}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand" id="brand"></div>
+    <ol class="progress" id="progress" aria-label="Setup progress" hidden></ol>
+  </div>
+</header>
+<p class="storage-warn" id="storageWarn" role="alert" hidden>This browser isn’t saving your entries between visits. Open the challenge with the personal link from your email each time, and your progress will load.</p>
+<main id="main" class="wrap"></main>
+<nav class="tabbar" id="tabbar" aria-label="Challenge" hidden>
+  <div class="tabbar-inner">
+    <button class="tab" data-act="tab" data-to="home">Today</button>
+    <button class="tab" data-act="tab" data-to="results">Results</button>
+    <button class="tab" data-act="tab" data-to="settings">Settings</button>
+  </div>
+</nav>
+
+<script>
+/* ------------------------------------------------------------------
+   Edit this block to adapt the challenge. Everything else reads it.
+------------------------------------------------------------------- */
+const CONFIG = {
+  challengeName: "Fair share challenge",
+  /* Where anonymous answers are sent: paste your Google Apps Script web app URL here.
+     Leave empty ("") to keep everything on the device only. */
+  collectUrl: "https://script.google.com/macros/s/AKfycbyTugx_4y14tzWkcj7KlzdUNi4SVZxvoEvtkN5Dvf5WDsJ9_7w-Oh1TC0tTkitJVAmB/exec",
+  collectedBy: "the challenge team",   // shown to participants: who receives the answers
+  title: "Who does more at home?",
+  days: 30,
+  stepMinutes: 15,        // each + / − tap on a task
+  paidStepMinutes: 30,    // each + / − tap on paid work
+  maxMinutes: 16 * 60,    // cap per row
+  groups: [
+    { id: "food",    label: "Food" },
+    { id: "home",    label: "Home" },
+    { id: "errands", label: "Errands and admin" },
+    { id: "kids",    label: "Children",          when: "kids" },
+    { id: "adults",  label: "Caring for adults", when: "adultCare" },
+    { id: "pets",    label: "Pets",              when: "pets" },
+    { id: "other",   label: "Anything else" },
+    { id: "me",      label: "Time for yourself", personal: true, note: "Not counted as work. It shows how much free time you each get." }
+  ],
+  categories: [
+    { id: "cook",       group: "food",    label: "Cooking",                  hint: "Meal prep, cooking, packed lunches" },
+    { id: "dishes",     group: "food",    label: "Dishes and kitchen",       hint: "Washing up, wiping down" },
+    { id: "clean",      group: "home",    label: "Cleaning and tidying",     hint: "Floors, bathrooms, putting away" },
+    { id: "laundry",    group: "home",    label: "Laundry",                  hint: "Washing, folding, ironing" },
+    { id: "repairs",    group: "home",    label: "Repairs, garden, car",     hint: "Fixing things, yard work, upkeep" },
+    { id: "shopping",   group: "errands", label: "Shopping and errands",     hint: "Groceries, pharmacy, post" },
+    { id: "admin",      group: "errands", label: "Bills and paperwork",      hint: "Payments, forms, bookings" },
+    { id: "kids_care",  group: "kids",    label: "Physical care",            long: "Children’s physical care",   hint: "Feeding, bathing, dressing, bedtime" },
+    { id: "kids_learn", group: "kids",    label: "Learning and play",        long: "Learning and play with children", hint: "Homework, reading, games" },
+    { id: "kids_move",  group: "kids",    label: "School runs, activities",  long: "School runs and activities",  hint: "Taking, collecting, waiting" },
+    { id: "kids_watch", group: "kids",    label: "On duty",                  long: "On duty with children",       hint: "In charge while doing other things. Not added to your total.", step: 30, secondary: true },
+    { id: "adult",      group: "adults",  label: "Caring for a relative",    hint: "Help, appointments, visits, calls" },
+    { id: "pets",       group: "pets",    label: "Pet care",                 hint: "Feeding, walks, vet, cleaning up" },
+    { id: "other",      group: "other",   label: "Other unpaid work",        hint: "Anything else for the household" },
+    { id: "hobbies",    group: "me",      label: "Hobbies",                  hint: "Reading, music, crafts, games", personal: true },
+    { id: "sport",      group: "me",      label: "Sport and exercise",       hint: "Gym, running, classes, long walks", personal: true },
+    { id: "rest",       group: "me",      label: "Rest and wellbeing",       hint: "Relaxing, self-care, time alone", personal: true }
+  ],
+  mentalLoad: [
+    { id: "meals",   label: "planned what we’d eat" },
+    { id: "stock",   label: "kept track of what we need" },
+    { id: "appts",   label: "booked or remembered appointments" },
+    { id: "kids",    label: "sorted school or childcare plans", when: "kids" },
+    { id: "family",  label: "remembered birthdays or family plans" },
+    { id: "noticed", label: "noticed something that needed doing" },
+    { id: "asked",   label: "asked or reminded the other to do something" },
+    { id: "fixed",   label: "dealt with a household problem" }
+  ],
+  fairness: [
+    { value: "fair",   label: "Fair" },
+    { value: "uneven", label: "A bit uneven" },
+    { value: "very",   label: "Very uneven" }
+  ],
+  kidsAges: ["Under 5", "5–12", "13–17"],
+  paidHelp: ["Cleaner", "Nanny or babysitter", "Cook", "Gardener or handyman", "Carer for a relative", "Other paid help"],
+  otherHelpers: ["Grandparents", "Other relatives", "Friends or neighbours", "Someone else"],
+  helpFreq: ["Less than once a week", "About once a week", "A few times a week", "Every day"],
+
+  /* Questions asked about each partner at the start */
+  personFields: [
+    { id: "gender",     question: "Gender",                     options: ["Man", "Woman", "Other", "Prefer not to say"] },
+    { id: "age",        question: "Age",                        options: ["18–24", "25–34", "35–44", "45–54", "55–64", "65 or over"] },
+    { id: "education",  question: "Highest level of education", options: ["Primary or less", "Secondary school", "Vocational or technical", "Bachelor’s degree", "Master’s degree or higher"] },
+    { id: "employment", question: "Work situation",             options: ["Employed full-time", "Employed part-time", "Self-employed", "Looking for work", "Student", "Looking after home or family", "Retired", "Other"] }
+  ],
+  areas: ["City", "Town or suburb", "Village or countryside"],
+  countriesTop: [],   // optional: countries to list first, written exactly as in the list below
+  countries: ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Côte d’Ivoire","Croatia","Cuba","Cyprus","Czechia","Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","São Tomé and Príncipe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Türkiye","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"]
+};
+
+/* When this page is served by Google Apps Script, answers go straight to the
+   Google Sheet through google.script.run, so no URL needs to be pasted above. */
+const IN_APPS_SCRIPT = typeof google === "object" && !!(google.script && google.script.run);
+if (IN_APPS_SCRIPT && !CONFIG.collectUrl) CONFIG.collectUrl = "apps-script";
+/* Personal links: each couple gets a fixed link by email that opens their challenge on any device. */
+const LINKS = IN_APPS_SCRIPT || /^https:\/\/script\.google\.com\//.test(CONFIG.collectUrl);
+
+/* ------------------------------------------------------------------ */
+const KEY = "fair-share-challenge-v1";
+const SETUP_STEPS = ["Names", "About you", "Home", "Start", "Guesses"];
+const setupStage = st => (st === 0 ? 0 : st <= 2 ? 1 : st <= 4 ? 2 : st === 5 ? 3 : 4);
+const HELP_KEYS = ["paidHelp", "paidHelpFreq", "otherHelp", "otherHelpLives", "otherHelpFreq"];
+const YESNO = [{ value: "yes", label: "Yes" }, { value: "no", label: "No" }];
+const main = document.getElementById("main");
+const header = document.querySelector(".top");
+const tabbar = document.getElementById("tabbar");
+document.getElementById("brand").textContent = CONFIG.challengeName;
+document.title = CONFIG.challengeName;
+
+let canStore = true;
+try { localStorage.setItem("__t", "1"); localStorage.removeItem("__t"); } catch (e) { canStore = false; }
+document.getElementById("storageWarn").hidden = canStore;
+
+function freshState() { return { v: 1, setup: null, entries: {} }; }
+function load() {
+  try { const r = localStorage.getItem(KEY); if (r) { const d = JSON.parse(r); if (d && d.v === 1 && d.entries) return d; } } catch (e) {}
+  return null;
+}
+function store() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+function save() { markUnsent(); store(); }
+
+/* ---------------- Sending anonymous answers ---------------- */
+const PERSON = ["A", "B"];
+let syncTimer = null, unsentRev = 0, sending = false;
+function newCode() {
+  const abc = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", b = new Uint8Array(8);
+  try { crypto.getRandomValues(b); } catch (e) { for (let i = 0; i < 8; i++) b[i] = Math.floor(Math.random() * 256); }
+  const c = Array.from(b, x => abc[x % abc.length]).join("");
+  return c.slice(0, 4) + "-" + c.slice(4);
+}
+function sharing() { return !!(CONFIG.collectUrl && S.setup && S.hid && S.setup.consent); }
+function markUnsent() {
+  if (!sharing()) return;
+  S.unsent = true; unsentRev++;
+  clearTimeout(syncTimer); syncTimer = setTimeout(sendNow, 1500);
+}
+const listOf = v => (Array.isArray(v) ? v.join(", ") : v == null ? "" : String(v));
+const ynOf = v => (v === true ? "Yes" : v === false ? "No" : "");
+const labelOf = (opts, v) => { const o = opts.find(x => x.value === v || x.id === v); return o ? o.label : (v || ""); };
+function payload() {
+  const s = S.setup, now = new Date().toISOString();
+  const h = { key: S.hid, code: S.hid, created: s.createdAt, updated: now, day1: s.startDate,
+    country: s.country || "", area: s.area || "",
+    children: s.kids == null ? "" : s.kids.length ? s.kids.join(", ") : "None",
+    adult_care: ynOf(s.adultCare), pets: ynOf(s.pets),
+    paid_help: s.paidHelp == null ? "" : s.paidHelp.length ? s.paidHelp.join(", ") : "None", paid_help_freq: s.paidHelpFreq || "",
+    other_help: s.otherHelp == null ? "" : s.otherHelp.length ? s.otherHelp.join(", ") : "None",
+    other_help_lives_with: s.otherHelpLives || "", other_help_freq: s.otherHelpFreq || "" };
+  [0, 1].forEach(p => {
+    CONFIG.personFields.forEach(f => (h[`${PERSON[p]}_${f.id}`] = (s.people[p] || {})[f.id] || ""));
+    h[`${PERSON[p]}_guess_own_share_pct`] = s.guesses[p];
+  });
+  const daily = [], tot = [0, 0], own = [0, 0], logged = [0, 0];
+  let both = 0;
+  Object.keys(S.entries).sort().forEach(d => {
+    const e = S.entries[d] || [];
+    if (e[0] && e[1]) both++;
+    [0, 1].forEach(p => {
+      const x = e[p];
+      if (!x) return;
+      const u = unpaidOf(x), me = personalOf(x);
+      tot[p] += u; own[p] += me; logged[p]++;
+      const r = { key: `${S.hid}|${d}|${PERSON[p]}`, code: S.hid, country: s.country || "", date: d, day: dayNum(d),
+        person: PERSON[p], gender: (s.people[p] || {}).gender || "",
+        unpaid_min: u, paid_work_min: x.paid || 0, own_time_min: me };
+      CONFIG.categories.forEach(c => (r[c.id + "_min"] = (x.m || {})[c.id] || 0));
+      r.mental_load = (x.mental || []).map(id => labelOf(CONFIG.mentalLoad, id)).join("; ");
+      r.mental_load_count = (x.mental || []).length;
+      r.felt_fair = labelOf(CONFIG.fairness, x.fair);
+      r.others_helped = listOf(x.helped);
+      r.note = x.note || "";
+      r.logged_at = x.at || "";
+      daily.push(r);
+    });
+  });
+  Object.assign(h, { days_logged_A: logged[0], days_logged_B: logged[1], days_both_logged: both,
+    A_unpaid_min_total: tot[0], B_unpaid_min_total: tot[1],
+    A_share_of_unpaid_pct: tot[0] + tot[1] ? Math.round((tot[0] / (tot[0] + tot[1])) * 100) : "",
+    A_own_time_min_total: own[0], B_own_time_min_total: own[1] });
+  const out = { app: "fair-share", households: [h], daily };
+  if (LINKS) {
+    out.state = serverState();
+    out.contact = { code: S.hid, day1: s.startDate, names: s.names, emails: s.emails || [] };
+  }
+  return out;
+}
+
+/* ---------------- Personal link: same challenge on every device ---------------- */
+const CODE_RE = /^[A-Z0-9]{4}-[A-Z0-9]{4}$/;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function serverState() {
+  const setup = Object.assign({}, S.setup);
+  delete setup.emails;   // emails are kept separately, only for sending the link and reminders
+  return { v: 1, hid: S.hid, entries: S.entries, seen: S.seen, setup };
+}
+function newerEntry(a, b) { if (!a) return b || null; if (!b) return a; return String(b.at || "") > String(a.at || "") ? b : a; }
+/* Adds anything newer from the other copy (for example, the partner logging on their own phone). */
+function mergeInto(local, remote) {
+  if (!remote || !remote.entries) return false;
+  let changed = false;
+  Object.keys(remote.entries).forEach(d => {
+    const le = local.entries[d] || [], re = remote.entries[d] || [];
+    const m = [newerEntry(le[0] || null, re[0] || null), newerEntry(le[1] || null, re[1] || null)];
+    if (m[0] !== (le[0] || null) || m[1] !== (le[1] || null)) { local.entries[d] = m; changed = true; }
+  });
+  if (remote.setup && local.setup && remote.setup.guessesRevealed && !local.setup.guessesRevealed) { local.setup.guessesRevealed = true; changed = true; }
+  Object.keys(remote.seen || {}).forEach(k => { if (remote.seen[k] && !local.seen[k]) { local.seen[k] = true; changed = true; } });
+  return changed;
+}
+/* Talks to the Google Apps Script backend. When this page is hosted elsewhere (GitHub Pages, Netlify),
+   requests go without Google sign-in cookies, so having several Google accounts open doesn't matter. */
+async function callServer(fn, arg) {
+  if (IN_APPS_SCRIPT) {
+    return new Promise((ok, fail) => google.script.run.withSuccessHandler(ok).withFailureHandler(fail)[fn](arg));
+  }
+  let res;
+  if (fn === "receive") {
+    res = await fetch(CONFIG.collectUrl, { method: "POST", body: arg, credentials: "omit", redirect: "follow", keepalive: arg.length < 60000 });
+  } else {
+    const action = fn === "getState" ? "state" : fn;
+    res = await fetch(`${CONFIG.collectUrl}?action=${encodeURIComponent(action)}&c=${encodeURIComponent(arg)}`, { credentials: "omit", redirect: "follow" });
+  }
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  const data = await res.json();
+  if (data && data.error) throw new Error(data.error);
+  return data;
+}
+function applyServerReply(r) {
+  if (!r) return;
+  if (r.link && S.link !== r.link) { S.link = r.link; store(); }
+  if (r.state && S.setup && mergeInto(S, r.state)) {
+    store();
+    if (["home", "day", "week", "results"].includes(V.name)) rerenderKeepScroll();
+    markUnsent();   // send again so the totals include the partner's entries
+  }
+}
+async function pullRemote() {
+  if (!LINKS || !S.setup || !S.hid || !S.setup.consent) return;
+  try { applyServerReply(await callServer("getState", S.hid)); } catch (e) { /* offline: try later */ }
+}
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") pullRemote(); });
+async function sendNow() {
+  if (!sharing() || !S.unsent || sending) return;
+  if (navigator.onLine === false) return;
+  sending = true;
+  const rev = unsentRev, body = JSON.stringify(payload());
+  let reply = null;
+  try {
+    if (LINKS) {
+      reply = await callServer("receive", body);
+    } else {
+      await fetch(CONFIG.collectUrl, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body, keepalive: body.length < 60000 });
+    }
+    if (rev === unsentRev) { S.unsent = false; store(); }
+  } catch (e) { /* offline or blocked: try again later */ }
+  sending = false;
+  if (reply) applyServerReply(reply);
+  if (S.unsent && rev !== unsentRev) { clearTimeout(syncTimer); syncTimer = setTimeout(sendNow, 1500); }
+}
+window.addEventListener("online", () => sendNow());
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && S.unsent) { clearTimeout(syncTimer); sendNow(); } });
+
+function normalise(st) {
+  if (!st.entries) st.entries = {};
+  if (!st.seen) st.seen = {};
+  if (st.setup) {
+    if (!Array.isArray(st.setup.people)) st.setup.people = [{}, {}];
+    if (st.setup.country === undefined) st.setup.country = "";
+    if (st.setup.area === undefined) st.setup.area = null;
+    HELP_KEYS.forEach(k => { if (st.setup[k] === undefined) st.setup[k] = null; });
+  }
+  return st;
+}
+let S = normalise(load() || freshState());
+let V = S.setup ? { name: "home" } : { name: "welcome" };
+let draft = null;       // setup answers, or the entry being logged
+let dirty = false;
+
+/* Helpers */
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pad = n => String(n).padStart(2, "0");
+const isoOf = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const parse = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const addDays = (s, n) => { const d = parse(s); d.setDate(d.getDate() + n); return isoOf(d); };
+const todayISO = () => isoOf(new Date());
+const diffDays = (a, b) => Math.round((parse(b) - parse(a)) / 86400000);
+const longDate = s => parse(s).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+const nm = p => S.setup.names[p];
+const pc = p => (p ? "pb" : "pa");
+const dayNum = d => diffDays(S.setup.startDate, d) + 1;
+const dateOf = n => addDays(S.setup.startDate, n - 1);
+const currentDay = () => diffDays(S.setup.startDate, todayISO()) + 1;
+const round5 = m => Math.round(m / 5) * 5;
+const share = (a, b) => (a + b ? a / (a + b) : 0.5);
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const catById = id => CONFIG.categories.find(c => c.id === id);
+const groupById = id => CONFIG.groups.find(g => g.id === id);
+const longLabel = c => c.long || c.label;
+const days = n => `${n} day${n === 1 ? "" : "s"}`;
+const shortDate = s => parse(s).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+const wdShort = s => parse(s).toLocaleDateString("en-GB", { weekday: "short" });
+const WEEKS = Array.from({ length: Math.floor(CONFIG.days / 7) }, (_, i) => ({ w: i + 1, from: i * 7 + 1, to: i * 7 + 7 }));
+const EXTRA = CONFIG.days % 7 ? { from: WEEKS.length * 7 + 1, to: CONFIG.days } : null;
+function bothLogged(n) { const e = S.entries[dateOf(n)]; return !!(e && e[0] && e[1]); }
+const periodReady = to => currentDay() > to || bothLogged(to);
+const weekReady = w => periodReady(WEEKS[w - 1].to);
+const monthReady = () => periodReady(CONFIG.days);
+const rangeText = (a, b) => `${shortDate(dateOf(a))} – ${shortDate(dateOf(b))}`;
+function evenPhrase(before, after) {
+  const d = Math.abs(before - 50) - Math.abs(after - 50);
+  return d >= 2 ? `${d} points more even` : d <= -2 ? `${-d} points less even` : "about as even";
+}
+function fmtMin(m) {
+  m = Math.round(m);
+  const h = Math.floor(m / 60), mm = m % 60;
+  return h && mm ? `${h} h ${mm} min` : h ? `${h} h` : `${mm} min`;
+}
+const fmtStep = m => { const h = Math.floor(m / 60), mm = m % 60; return h && mm ? `${h}h ${mm}m` : h ? `${h} h` : `${mm} min`; };
+const unpaidOf = e => CONFIG.categories.reduce((s, c) => s + (c.secondary || c.personal ? 0 : (e.m[c.id] || 0)), 0);
+const personalOf = e => CONFIG.categories.reduce((s, c) => s + (c.personal ? (e.m[c.id] || 0) : 0), 0);
+function countryList() {
+  const all = [...CONFIG.countries].sort((a, b) => a.localeCompare(b, "en"));
+  const top = CONFIG.countriesTop.filter(c => all.includes(c));
+  return [...top, ...all.filter(c => !top.includes(c)), "Other"];
+}
+const checkedVals = name => [...main.querySelectorAll(`input[name="${name}"]:checked`)].map(i => i.value);
+function whenOn(when, h) {
+  if (!when) return true;
+  const src = h || S.setup;
+  if (when === "kids") return !!(src.kids && src.kids.length);
+  return !!src[when];
+}
+function revealedDates() {
+  return Object.keys(S.entries).filter(d => {
+    const e = S.entries[d], n = dayNum(d);
+    return e && e[0] && e[1] && n >= 1 && n <= CONFIG.days;
+  }).sort();
+}
+
+function chips(name, options, selected, type = "radio") {
+  return options.map(o => {
+    const val = typeof o === "string" ? o : o.value;
+    const lab = typeof o === "string" ? o : o.label;
+    const on = type === "radio" ? selected === val : (selected || []).includes(val);
+    return `<label class="chip"><input type="${type}" name="${name}" value="${esc(val)}"${on ? " checked" : ""}><span>${esc(lab)}</span></label>`;
+  }).join("");
+}
+
+function duoHTML(a, b, opts = {}) {
+  const f = opts.fmt || fmtMin;
+  const empty = a + b === 0;
+  const pa = Math.round(share(a, b) * 100);
+  const names = opts.names !== false;
+  const top = names ? `<div class="duo-top">
+      <span class="who"><i class="dot pa"></i>${esc(nm(0))}${empty ? "" : ` <b>${pa}%</b>`}</span>
+      <span class="who">${empty ? "" : `<b>${100 - pa}%</b> `}${esc(nm(1))}<i class="dot pb"></i></span></div>` : "";
+  return `<div class="duo${opts.big ? " big" : ""}">${top}
+    <span class="split${opts.big ? " big" : ""}${empty ? " empty" : ""}" role="img" aria-label="${esc(`${nm(0)} ${f(a)}, ${nm(1)} ${f(b)}`)}"><i style="width:${pa}%"></i></span>
+    <div class="duo-bottom"><span>${f(a)}</span><span>${f(b)}</span></div></div>`;
+}
+function cmpRow(label, a, b, f) {
+  return `<li class="cmp"><span class="cmp-label">${esc(label)}</span>${duoHTML(a, b, { names: false, fmt: f })}</li>`;
+}
+function legendRow() {
+  return `<div class="legend-row"><span><i class="dot pa"></i>${esc(nm(0))}, left</span><span><i class="dot pb"></i>${esc(nm(1))}, right</span></div>`;
+}
+
+/* 30-day grid */
+function cellHTML(n, cd) {
+  const d = dateOf(n), e = S.entries[d] || [null, null];
+  const future = n > cd, today = n === cd, done = e[0] && e[1];
+  let inner = "", label = `Day ${n}, ${longDate(d)}: `;
+  if (future) label += "coming up";
+  else if (done) {
+    const pa = Math.round(share(unpaidOf(e[0]), unpaidOf(e[1])) * 100);
+    inner = `<span class="cell-bar"><i style="width:${pa}%"></i></span>`;
+    label += `${nm(0)} ${pa}%, ${nm(1)} ${100 - pa}%`;
+  } else {
+    inner = `<span class="cell-dots"><i class="pa${e[0] ? " on" : ""}"></i><i class="pb${e[1] ? " on" : ""}"></i></span>`;
+    label += e[0] ? `${nm(0)} has logged, ${nm(1)} hasn’t` : e[1] ? `${nm(1)} has logged, ${nm(0)} hasn’t` : "not logged yet";
+  }
+  return `<button class="cell${future ? " future" : ""}${today ? " today" : ""}" ${future ? "disabled" : `data-act="open-day" data-n="${n}"`} aria-label="${esc(label)}"${today ? ' aria-current="date"' : ""}><span>${n}</span>${future ? "" : inner}</button>`;
+}
+function gridHTML() {
+  const cd = currentDay();
+  const blocks = [...WEEKS.map(wk => ({ ...wk, label: `Week ${wk.w}` })), ...(EXTRA ? [{ ...EXTRA, label: `Days ${EXTRA.from}–${EXTRA.to}` }] : [])];
+  return `<div class="weeks">${blocks.map(b => {
+    const right = b.w
+      ? (weekReady(b.w) ? `<button class="wk-btn${S.seen["w" + b.w] ? " seen" : ""}" data-act="open-week" data-w="${b.w}" data-from="home" aria-label="Open the week ${b.w} summary">See summary</button>` : `<span class="wk-note">Summary after day ${b.to}</span>`)
+      : `<span class="wk-note">In the month summary</span>`;
+    let cells = "";
+    for (let n = b.from; n <= b.to; n++) cells += cellHTML(n, cd);
+    return `<div class="wk"><div class="wk-head"><span class="wk-label">${b.label}<small>${rangeText(b.from, b.to)}</small></span>${right}</div><div class="grid">${cells}</div></div>`;
+  }).join("")}</div>`;
+}
+function demoGridHTML() {
+  const shares = [64, 58, 71, 49, 66, 60, 74, 55, 62, 68, 57, 70];
+  let h = "";
+  for (let n = 1; n <= CONFIG.days; n++) {
+    let inner = "", cls = "cell";
+    if (n <= shares.length) inner = `<span class="cell-bar"><i style="width:${shares[n - 1]}%"></i></span>`;
+    else if (n === shares.length + 1) { cls += " today"; inner = `<span class="cell-dots"><i class="pa on"></i><i class="pb"></i></span>`; }
+    else cls += " future";
+    h += `<span class="${cls}"><span>${n}</span>${inner}</span>`;
+  }
+  return `<div class="grid" aria-hidden="true">${h}</div>`;
+}
+
+/* ---------------- Views ---------------- */
+function viewWelcome() {
+  return `<section>
+    <h1 class="display" tabindex="-1">${esc(CONFIG.title)}</h1>
+    <p class="lede">A ${CONFIG.days}-day challenge for couples. Each evening, you both log the unpaid work you did (cooking, cleaning, childcare, errands, the planning nobody sees) and the time you had for yourself. Each day stays hidden until you’ve both logged it.</p>
+    <figure class="demo">
+      ${demoGridHTML()}
+      <figcaption>Every finished day shows how the work split between you. Each week ends with a summary, and day ${CONFIG.days} brings the full picture.</figcaption>
+    </figure>
+    <ol class="plan">
+      <li><strong>Set up together</strong><span>A few questions about each of you, your home, and a private guess each. About 3 minutes.</span></li>
+      <li><strong>Log each evening</strong><span>Tap + and − for each task. About 2 minutes each.</span></li>
+      <li><strong>Get a summary every week</strong><span>How the work split, what changed since last week, and one thing to try next.</span></li>
+      <li><strong>See the month summary on day ${CONFIG.days}</strong><span>Who did what, how it changed week by week, and how your guesses compared.</span></li>
+    </ol>
+    ${V.notFound ? `<div class="banner" role="status"><p><b>We couldn’t find a challenge for this link.</b> Check that you opened the full link from your email, or set up a new challenge below.</p></div>` : ""}
+    ${V.offline ? `<div class="banner" role="status"><p><b>We couldn’t connect.</b> Check your internet connection and open your link again.</p></div>` : ""}
+    <p class="fine">${LINKS ? `Set up together on one device. After that, you can log on any phone or computer: we’ll email you a personal link that always opens your challenge where you left off. Your answers are shared with ${esc(CONFIG.collectedBy)} without your names, to learn how couples share unpaid work.` : ""}${LINKS ? "" : "Use the same phone or tablet for both of you. "}${LINKS ? "" : CONFIG.collectUrl ? `Your names stay on this device. Your answers are shared anonymously with ${esc(CONFIG.collectedBy)} to learn how couples share unpaid work.` : "Everything is saved on this device only."}</p>
+    <div class="actions start"><button class="btn primary" data-act="setup">Set up the challenge</button></div>
+  </section>`;
+}
+
+function personHTML(p, prof) {
+  return CONFIG.personFields.map(f => `<fieldset class="q" id="q-${f.id}-${p}"><legend>${esc(f.question)}</legend>
+      <div class="chips">${chips(`${f.id}-${p}`, f.options, prof[f.id])}</div></fieldset>`).join("");
+}
+function helpHTML(h) {
+  const sel = (v, none) => (v === null || v === undefined ? [] : v.length ? v : [none]);
+  return `<fieldset class="q" id="q-paidHelp"><legend>Do you pay anyone to help at home?</legend>
+      <p class="help">Choose all that apply.</p>
+      <div class="chips">${chips("paidHelp", [{ value: "none", label: "No paid help" }, ...CONFIG.paidHelp], sel(h.paidHelp, "none"), "checkbox")}</div>
+      <div class="sub" id="paid-more"${h.paidHelp && h.paidHelp.length ? "" : " hidden"}>
+        <fieldset class="q" id="q-paidHelpFreq"><legend>How often does paid help come, in total?</legend>
+          <div class="chips">${chips("paidHelpFreq", CONFIG.helpFreq, h.paidHelpFreq)}</div></fieldset>
+      </div></fieldset>
+    <fieldset class="q" id="q-otherHelp"><legend>Do other adults help with the work at home, unpaid?</legend>
+      <p class="help">Cooking, childcare, cleaning, errands. Choose all that apply.</p>
+      <div class="chips">${chips("otherHelp", [{ value: "none", label: "No one else" }, ...CONFIG.otherHelpers], sel(h.otherHelp, "none"), "checkbox")}</div>
+      <div class="sub" id="other-more"${h.otherHelp && h.otherHelp.length ? "" : " hidden"}>
+        <fieldset class="q" id="q-otherHelpLives"><legend>Does any of them live with you?</legend>
+          <div class="chips">${chips("otherHelpLives", YESNO, h.otherHelpLives)}</div></fieldset>
+        <fieldset class="q" id="q-otherHelpFreq"><legend>How often do they help, in total?</legend>
+          <div class="chips">${chips("otherHelpFreq", CONFIG.helpFreq, h.otherHelpFreq)}</div></fieldset>
+      </div></fieldset>`;
+}
+function helpedOptions(extra) {
+  const o = [];
+  if ((S.setup.paidHelp || []).length || extra.includes("paid")) o.push({ value: "paid", label: "Paid help came" });
+  if ((S.setup.otherHelp || []).length || extra.includes("others")) o.push({ value: "others", label: "Family or friends helped" });
+  return o;
+}
+function householdHTML(h, forSetup) {
+  const kidsSel = h.kids === null ? [] : h.kids.length ? h.kids : ["none"];
+  const yn = v => (v === null || v === undefined ? null : v ? "yes" : "no");
+  return `<div class="q" id="q-country"><label class="legend" for="country">Which country do you live in?</label>
+      <div class="select-wrap"><select class="select" id="country" name="country"><option value="">Choose a country</option>${countryList().map(c => `<option${h.country === c ? " selected" : ""}>${esc(c)}</option>`).join("")}</select></div></div>
+    <fieldset class="q" id="q-area"><legend>What kind of place do you live in?</legend>
+      <div class="chips">${chips("area", CONFIG.areas, h.area)}</div></fieldset>
+    <fieldset class="q" id="q-kids"><legend>Do children live with you?</legend>
+      <p class="help">Choose every age group that applies.</p>
+      <div class="chips">${chips("kids", [{ value: "none", label: "No children" }, ...CONFIG.kidsAges], kidsSel, "checkbox")}</div></fieldset>
+    <fieldset class="q" id="q-adult"><legend>Does either of you look after an adult?</legend>
+      <p class="help">For example an older parent, or someone who is ill or disabled.</p>
+      <div class="chips">${chips("adultCare", YESNO, yn(h.adultCare))}</div></fieldset>
+    <fieldset class="q" id="q-pets"><legend>Do you have pets?</legend>
+      <div class="chips">${chips("pets", YESNO, yn(h.pets))}</div></fieldset>`;
+}
+
+function guessHTML(p) {
+  const g = draft.guesses[p];
+  const aShare = p ? 100 - g : g;
+  return `<div class="guess" style="--me:var(--${pc(p)})">
+    <output class="guess-val" id="gv" for="guess">${g}%</output>
+    <label class="sr" for="guess">${esc(draft.names[p])}’s share of the unpaid work, in percent</label>
+    <input type="range" id="guess" min="0" max="100" step="5" value="${g}" data-p="${p}">
+    <div class="guess-scale"><span>None of it</span><span>Half</span><span>All of it</span></div>
+    <span class="split" id="gsplit" aria-hidden="true"><i style="width:${aShare}%"></i></span>
+    <div class="duo-bottom"><span>${esc(draft.names[0])}</span><span>${esc(draft.names[1])}</span></div>
+  </div>`;
+}
+
+function consentHTML(on) {
+  return `<fieldset class="q" id="q-consent"><legend>Sharing your answers</legend>
+      <p class="help">Your answers (the questions about you and your home, your guesses, and each day’s log, including any notes) are sent to ${esc(CONFIG.collectedBy)} without your names, under a random code. They are used only to learn how couples share unpaid work.${LINKS ? " Your names and the one email you gave us are stored separately from the research data, only to send you your personal link and evening reminders." : ""}</p>
+      <div class="chips"><label class="chip"><input type="checkbox" name="consent" value="yes"${on ? " checked" : ""}><span>${LINKS ? "We both agree to share our answers as described above" : "We both agree to share our answers anonymously"}</span></label></div></fieldset>`;
+}
+
+function viewSetup() {
+  const st = V.step, d = draft;
+  const nav = (next = "Continue") => `<p class="error" id="err" role="alert"></p>
+    <div class="actions"><button class="btn link" data-act="setup-back">Back</button><button class="btn primary" data-act="setup-next">${next}</button></div>`;
+  if (st === 0) return `<section>
+    <h1 tabindex="-1">Who’s taking part?</h1>
+    <p class="lede">First names or nicknames are fine. ${LINKS ? "We use your names and email only to send you your personal link and an evening reminder. They are never part of the research data." : "They stay on this device and are never shared."}</p>
+    <div class="q"><label class="legend" for="n0"><i class="dot pa"></i>Your name</label><input class="text" id="n0" maxlength="24" autocomplete="off" value="${esc(d.names[0])}"></div>
+    <div class="q"><label class="legend" for="n1"><i class="dot pb"></i>Your partner’s name</label><input class="text" id="n1" maxlength="24" autocomplete="off" value="${esc(d.names[1])}"></div>
+    ${LINKS ? `<div class="q"><label class="legend" for="e0">One email for both of you</label><p class="help">Only one of you needs to add an email. We’ll send your shared link and an evening reminder there.</p><input class="text" id="e0" type="email" maxlength="120" autocomplete="email" inputmode="email" value="${esc(d.emails[0])}"></div>` : ""}
+    ${nav()}
+  </section>`;
+  if (st === 1 || st === 2) {
+    const p = st - 1;
+    return `<section>
+    <p class="log-head"><i class="dot ${pc(p)}"></i>Questions for ${esc(d.names[p])}</p>
+    <h1 tabindex="-1">About ${esc(d.names[p])}</h1>
+    <p class="lede">${p === 0 ? `Four quick questions. Then it’s ${esc(d.names[1])}’s turn.` : `The same four questions for ${esc(d.names[1])}.`} ${CONFIG.collectUrl ? "Your answers are shared anonymously, without your names." : "Your answers stay on this device."}</p>
+    ${personHTML(p, d.people[p])}
+    ${nav()}
+  </section>`;
+  }
+  if (st === 3) return `<section>
+    <h1 tabindex="-1">About your home</h1>
+    <p class="lede">This also decides which tasks you’ll log. You can change it later in Settings.</p>
+    ${householdHTML(d, true)}
+    ${nav()}
+  </section>`;
+  if (st === 4) return `<section>
+    <h1 tabindex="-1">Help at home</h1>
+    <p class="lede">Help from others changes how much work is left for the two of you, so it matters for your results.</p>
+    ${helpHTML(d)}
+    ${nav()}
+  </section>`;
+  if (st === 5) {
+    const t = todayISO(), tm = addDays(t, 1);
+    return `<section>
+    <h1 tabindex="-1">When do you start?</h1>
+    <fieldset class="q"><legend>Day 1 is</legend>
+      <div class="chips">${chips("start", [{ value: "today", label: `Today, ${longDate(t)}` }, { value: "tomorrow", label: `Tomorrow, ${longDate(tm)}` }], d.start)}</div></fieldset>
+    <div class="card"><h2>How the ${CONFIG.days} days work</h2>
+      <ul class="plain-list">
+        <li>Each evening, you each log your own day${LINKS ? ", on this device or on any other with your personal link" : " on this device"}. It takes about 2 minutes.</li>
+        <li>Log separately and honestly. A day stays hidden until you’ve both logged it.</li>
+        <li>Log unpaid work for your home and family, and the time you had for yourself. Round to the nearest 15 minutes.</li>
+        <li>Missed a day? Tap it in the calendar and fill it in later.</li>
+        <li>At the end of each week, you get a summary of how it went. After day ${CONFIG.days}, you get the month summary.</li>
+      </ul></div>
+    ${CONFIG.collectUrl ? consentHTML(d.consent) : ""}
+    ${nav()}
+  </section>`;
+  }
+  if (st === 6) return `<section>
+    <p class="log-head"><i class="dot pa"></i>For ${esc(d.names[0])} only</p>
+    <h1 tabindex="-1">${esc(d.names[0])}, a private guess</h1>
+    <p class="lede">Of all the unpaid work in your home, what share do you do? ${esc(d.names[1])} won’t see your answer until day ${CONFIG.days}.</p>
+    ${guessHTML(0)}
+    ${nav("Lock in my guess")}
+  </section>`;
+  if (st === 7) return `<section class="handoff">
+    <i class="dot pb" aria-hidden="true"></i>
+    <h1 tabindex="-1">Pass the phone to ${esc(d.names[1])}</h1>
+    <p class="lede">${esc(d.names[0])}’s guess is locked in and hidden.</p>
+    <div class="actions start"><button class="btn primary" data-act="setup-next">I’m ${esc(d.names[1])}</button></div>
+  </section>`;
+  return `<section>
+    <p class="log-head"><i class="dot pb"></i>For ${esc(d.names[1])} only</p>
+    <h1 tabindex="-1">${esc(d.names[1])}, your private guess</h1>
+    <p class="lede">Of all the unpaid work in your home, what share do you do? ${esc(d.names[0])} won’t see your answer until day ${CONFIG.days}.</p>
+    ${guessHTML(1)}
+    <div class="actions start"><button class="btn primary" data-act="setup-next">Lock in and start the challenge</button></div>
+  </section>`;
+}
+
+function personRow(p, d, from) {
+  const e = (S.entries[d] || [])[p];
+  const lbl = e ? `Edit ${nm(p)}’s day` : `Log ${nm(p)}’s day`;
+  return `<li><span class="who"><i class="dot ${pc(p)}"></i><span><b>${esc(nm(p))}</b><small>${e ? "Logged" : "Not logged yet"}</small></span></span>
+    <button class="btn small ${e ? "ghost" : "primary"}" data-act="log" data-p="${p}" data-date="${d}" data-from="${from}" aria-label="${esc(lbl)}">${e ? "Edit" : "Log day"}</button></li>`;
+}
+
+function banner() {
+  if (V.started) {
+    return `<div class="banner" role="status"><p><b>You’re all set.</b> ${currentDay() >= 1 ? "Log day 1 this evening, one after the other." : "Day 1 starts tomorrow."}${LINKS ? " We’re emailing you your personal link. Use it to open the challenge on any phone or computer." : ""}</p></div>`;
+  }
+  if (V.restored) return `<div class="banner" role="status"><p><b>Welcome back.</b> Your challenge is up to date on this device.</p></div>`;
+  const s = V.saved;
+  if (!s) return "";
+  const n = dayNum(s.date), e = S.entries[s.date] || [null, null];
+  if (e[0] && e[1]) {
+    return `<div class="banner reveal" role="status"><p><b>Day ${n} is complete.</b> Here’s how the unpaid work split.</p>
+      ${duoHTML(unpaidOf(e[0]), unpaidOf(e[1]))}
+      ${V.name === "home" ? `<button class="btn link" data-act="open-day" data-n="${n}">See day ${n} in detail</button>` : ""}</div>`;
+  }
+  return `<div class="banner" role="status"><p><b>Saved.</b> Day ${n} stays hidden until ${esc(nm(1 - s.p))} logs it too.</p></div>`;
+}
+
+function readyCard() {
+  if (monthReady() && !S.seen.month) {
+    return `<div class="card ready-card"><p class="eyebrow">New summary</p><h2>Your month summary is ready</h2>
+      <p>All ${CONFIG.days} days: who did what, how it changed week by week, and how your guesses compared.</p>
+      <button class="btn primary" data-act="tab" data-to="results">Open the month summary</button></div>`;
+  }
+  for (const wk of WEEKS) {
+    if (weekReady(wk.w) && !S.seen["w" + wk.w]) {
+      return `<div class="card ready-card"><p class="eyebrow">New summary</p><h2>Week ${wk.w} is done</h2>
+        <p>How the work split over days ${wk.from}–${wk.to}${wk.w > 1 ? `, what changed since week ${wk.w - 1}` : ""}${wk.w < WEEKS.length ? ", and one thing to try next week" : ""}.</p>
+        <button class="btn primary" data-act="open-week" data-w="${wk.w}" data-from="home">Open the week ${wk.w} summary</button></div>`;
+    }
+  }
+  return "";
+}
+function viewHome() {
+  const cd = currentDay();
+  const status = cd < 1 ? "before" : cd > CONFIG.days ? "after" : "during";
+  const st = stats();
+  let head, todayCard = "";
+  if (status === "before") {
+    head = `<h1 class="display" tabindex="-1">Starts ${cd === 0 ? "tomorrow" : `in ${1 - cd} days`}</h1><p class="lede">Day 1 is <b>${longDate(S.setup.startDate)}</b>. Come back that evening to log it.</p>`;
+  } else if (status === "during") {
+    const t = todayISO();
+    head = `<h1 class="display" tabindex="-1">Day ${cd} of ${CONFIG.days}</h1><p class="lede">${longDate(t)} · ${cd <= WEEKS.length * 7 ? `Week ${Math.ceil(cd / 7)}` : "Final days"}</p>`;
+    const e = S.entries[t] || [null, null];
+    let nudge = "";
+    if (cd > 1) {
+      const y = dateOf(cd - 1), ye = S.entries[y] || [null, null];
+      const missing = [0, 1].filter(p => !ye[p]);
+      if (missing.length) nudge = `<p class="nudge">Yesterday isn’t finished: ${missing.map(p => esc(nm(p))).join(" and ")} ${missing.length > 1 ? "haven’t" : "hasn’t"} logged it. <button class="btn link" data-act="open-day" data-n="${cd - 1}">Fill in day ${cd - 1}</button></p>`;
+    }
+    todayCard = `<div class="card"><h2>Tonight’s log</h2><ul class="people">${personRow(0, t, "home")}${personRow(1, t, "home")}</ul>
+      ${e[0] && e[1] && !(V.saved && V.saved.date === t) ? `<div style="margin-top:16px">${duoHTML(unpaidOf(e[0]), unpaidOf(e[1]))}</div>` : ""}${nudge}</div>`;
+  } else {
+    head = `<h1 class="display" tabindex="-1">Challenge complete</h1><p class="lede">Your ${CONFIG.days} days ended on ${longDate(dateOf(CONFIG.days))}. Any missing days can still be filled in below.</p>`;
+    todayCard = S.seen.month ? `<div class="card"><p>You logged ${days(st.dates.length)} together.</p><button class="btn ghost" data-act="tab" data-to="results">See your month summary</button></div>` : "";
+  }
+  const sofar = st.dates.length
+    ? `<section class="section"><h2>${status === "after" ? "Overall" : "So far"}</h2>
+        ${duoHTML(st.t[0].unpaid, st.t[1].unpaid, { big: true })}
+        <p class="help" style="margin:12px 0 0">Unpaid work over ${days(st.dates.length)} you’ve both logged. <button class="btn link" data-act="tab" data-to="results" style="min-height:0;padding:0 2px">See all results</button></p></section>`
+    : status === "before" ? "" : `<p class="empty-note">Your running score appears here once you’ve both logged the same day.</p>`;
+  return `<section>${head}${banner()}${readyCard()}${todayCard}${sofar}
+    <section class="section"><h2>Your ${CONFIG.days} days</h2>
+      <p class="help">Tap a day to see it or fill it in. Each week ends with a summary.</p>
+      ${gridHTML()}
+      <div class="grid-key"><span><i class="key-bar"></i>Finished day: ${esc(nm(0))}’s share on the left</span><span><i class="key-dot"></i>Who has logged so far</span></div>
+    </section></section>`;
+}
+
+function viewDay() {
+  const n = V.n, d = dateOf(n), e = S.entries[d] || [null, null];
+  const done = e[0] && e[1];
+  let body = `<p class="empty-note">Once you’ve both logged this day, you’ll see how it split.</p>`;
+  if (done) {
+    const [a, b] = e;
+    const cats = CONFIG.categories.filter(c => !c.secondary && !c.personal && ((a.m[c.id] || 0) + (b.m[c.id] || 0)) > 0)
+      .sort((x, y) => ((a.m[y.id] || 0) + (b.m[y.id] || 0)) - ((a.m[x.id] || 0) + (b.m[x.id] || 0)));
+    const ownA = personalOf(a), ownB = personalOf(b);
+    const sec = CONFIG.categories.filter(c => c.secondary && ((a.m[c.id] || 0) + (b.m[c.id] || 0)) > 0);
+    const ml = CONFIG.mentalLoad.filter(m => (a.mental || []).includes(m.id) || (b.mental || []).includes(m.id));
+    const feels = [0, 1].filter(p => e[p].fair);
+    const notes = [0, 1].filter(p => e[p].note && e[p].note.trim());
+    body = `<section class="section"><h2>Unpaid work</h2>${duoHTML(unpaidOf(a), unpaidOf(b), { big: true })}</section>
+      ${cats.length ? `<section class="section"><h2>By task</h2>${legendRow()}<ul class="cmp-list">${cats.map(c => cmpRow(longLabel(c), a.m[c.id] || 0, b.m[c.id] || 0)).join("")}${sec.map(c => cmpRow(longLabel(c) + " (not in totals)", a.m[c.id] || 0, b.m[c.id] || 0)).join("")}</ul></section>` : ""}
+      ${a.paid || b.paid ? `<section class="section"><h2>Paid work</h2>${duoHTML(a.paid || 0, b.paid || 0)}</section>` : ""}
+      ${ownA || ownB ? `<section class="section"><h2>Time for yourself</h2>${duoHTML(ownA, ownB)}</section>` : ""}
+      ${(() => { const hp = new Set([...(a.helped || []), ...(b.helped || [])]); const t = [hp.has("paid") ? "paid help came" : "", hp.has("others") ? "family or friends helped" : ""].filter(Boolean);
+        return t.length ? `<section class="section"><h2>Other help</h2><p>${esc(cap(t.join(", and ")))}.</p></section>` : ""; })()}
+      ${ml.length ? `<section class="section"><h2>Invisible work</h2><ul class="ml">${ml.map(m => {
+        const who = [0, 1].filter(p => (e[p].mental || []).includes(m.id));
+        return `<li><span>${esc(cap(m.label))}</span><span class="ml-who">${who.map(p => `<i class="dot ${pc(p)}"></i>`).join("")}${who.map(p => esc(nm(p))).join(" and ")}</span></li>`;
+      }).join("")}</ul></section>` : ""}
+      ${feels.length ? `<section class="section"><h2>How it felt</h2><ul class="feel">${feels.map(p => `<li><i class="dot ${pc(p)}"></i><span><b>${esc(nm(p))}:</b> ${esc(CONFIG.fairness.find(f => f.value === e[p].fair).label)}</span></li>`).join("")}</ul></section>` : ""}
+      ${notes.length ? `<section class="section"><h2>Notes</h2>${notes.map(p => `<p class="quote" style="--me:var(--${pc(p)})"><b>${esc(nm(p))}</b>${esc(e[p].note)}</p>`).join("")}</section>` : ""}`;
+  }
+  return `<section>
+    <button class="btn link back" data-act="tab" data-to="home">Back to today</button>
+    <h1 tabindex="-1">Day ${n}</h1><p class="lede">${longDate(d)}</p>
+    ${banner()}
+    <div class="card"><ul class="people">${personRow(0, d, "day")}${personRow(1, d, "day")}</ul></div>
+    ${body}
+  </section>`;
+}
+
+/* Logging */
+function blankEntry() { return { m: {}, paid: 0, mental: [], helped: [], fair: null, note: "" }; }
+function lastEntryBefore(p, date) {
+  const ds = Object.keys(S.entries).filter(d => d < date && S.entries[d][p]).sort();
+  return ds.length ? ds[ds.length - 1] : null;
+}
+function rowHTML(id, label, hint, v) {
+  return `<li class="row${v ? " has-time" : ""}" id="row-${id}">
+    <div><span class="row-label" id="l-${id}">${esc(label)}</span>${hint ? `<span class="row-hint">${esc(hint)}</span>` : ""}</div>
+    <div class="stepper" role="group" aria-labelledby="l-${id}">
+      <button class="step" data-act="dec" data-cat="${id}" aria-label="Less time: ${esc(label)}"${v ? "" : " disabled"}>−</button>
+      <output class="step-val" id="v-${id}" aria-live="polite">${fmtStep(v)}</output>
+      <button class="step" data-act="inc" data-cat="${id}" aria-label="More time: ${esc(label)}">+</button>
+    </div></li>`;
+}
+function viewLog() {
+  const { p, date } = V, n = dayNum(date), other = 1 - p;
+  const groups = CONFIG.groups.filter(g => {
+    const cs = CONFIG.categories.filter(c => c.group === g.id);
+    return whenOn(g.when) || cs.some(c => draft.m[c.id]);
+  });
+  const groupHTML = g => {
+    const cs = CONFIG.categories.filter(c => c.group === g.id);
+    return `<section class="group"><h2>${esc(g.label)}</h2>${g.note ? `<p class="help">${esc(g.note)}</p>` : ""}<ul class="rows">${cs.map(c => rowHTML(c.id, c.label, c.hint, draft.m[c.id] || 0)).join("")}</ul></section>`;
+  };
+  const groupsHTML = groups.filter(g => !g.personal).map(groupHTML).join("");
+  const personalHTML = groups.filter(g => g.personal).map(groupHTML).join("");
+  const empty = !unpaidOf(draft) && !draft.paid && !Object.keys(draft.m).length;
+  const last = empty ? lastEntryBefore(p, date) : null;
+  const ml = CONFIG.mentalLoad.filter(m => whenOn(m.when) || (draft.mental || []).includes(m.id)).map(m => ({ value: m.id, label: m.label }));
+  return `<section style="--me:var(--${pc(p)})">
+    <p class="log-head"><i class="dot"></i>Logging as ${esc(nm(p))}</p>
+    <h1 tabindex="-1">${esc(nm(p))}’s day</h1>
+    <p class="lede">Day ${n}, ${longDate(date)}. Count only unpaid work for your home and family. ${esc(nm(other))} won’t see this until you’ve both logged the day.</p>
+    ${last ? `<div class="copy-last"><button class="btn ghost small" data-act="copy-last" data-from="${last}">Start from my day ${dayNum(last)} entry</button></div>` : ""}
+    ${V.copied ? `<p class="help" role="status" style="margin:0 0 20px">Copied your times from day ${V.copied}. Change anything that was different today.</p>` : ""}
+    ${groupsHTML}
+    <section class="group"><h2>Paid work, for context</h2><ul class="rows">${rowHTML("__paid", "Paid work", "Including working from home", draft.paid || 0)}</ul></section>
+    ${personalHTML}
+    ${(() => { const ho = helpedOptions(draft.helped || []); return ho.length ? `<fieldset class="q"><legend>Did anyone else help today? <span class="opt">Optional</span></legend>
+      <div class="chips">${chips("helped", ho, draft.helped || [], "checkbox")}</div></fieldset>` : ""; })()}
+    <fieldset class="q"><legend>Today I was the one who… <span class="opt">Tick any</span></legend>
+      <p class="help">The planning and remembering that’s easy to miss.</p>
+      <div class="chips">${chips("mental", ml, draft.mental, "checkbox")}</div></fieldset>
+    <fieldset class="q"><legend>How fair did today feel? <span class="opt">Optional</span></legend>
+      <div class="chips">${chips("fair", CONFIG.fairness, draft.fair)}</div></fieldset>
+    <div class="q"><label class="legend" for="note">Anything about today? <span class="opt">Optional</span></label>
+      <textarea id="note" rows="2" maxlength="400">${esc(draft.note)}</textarea></div>
+    <div class="actions"><button class="btn link" data-act="cancel-log">Cancel</button></div>
+    <div class="savebar"><p class="savebar-warn" id="warn" role="alert"></p><div class="savebar-inner">
+      <div class="savebar-total"><span>Unpaid work today</span><strong id="tot">${fmtMin(unpaidOf(draft))}</strong></div>
+      <button class="btn primary" data-act="save-log">Save ${esc(nm(p))}’s day</button></div></div>
+  </section>`;
+}
+function openLog(p, date, from) {
+  const ex = (S.entries[date] || [])[p];
+  draft = ex ? JSON.parse(JSON.stringify(ex)) : blankEntry();
+  dirty = false;
+  go({ name: "log", p, date, from });
+}
+function bump(id, dir) {
+  const isPaid = id === "__paid";
+  const step = isPaid ? CONFIG.paidStepMinutes : (catById(id).step || CONFIG.stepMinutes);
+  let v = isPaid ? (draft.paid || 0) : (draft.m[id] || 0);
+  v = Math.max(0, Math.min(CONFIG.maxMinutes, v + dir * step));
+  if (isPaid) draft.paid = v; else if (v) draft.m[id] = v; else delete draft.m[id];
+  dirty = true;
+  const row = main.querySelector("#row-" + CSS.escape(id));
+  row.classList.toggle("has-time", v > 0);
+  row.querySelector(".step-val").textContent = fmtStep(v);
+  row.querySelector('[data-act="dec"]').disabled = v === 0;
+  updateTotals();
+}
+function updateTotals() {
+  const u = unpaidOf(draft);
+  main.querySelector("#tot").textContent = fmtMin(u);
+  main.querySelector("#warn").textContent = u + (draft.paid || 0) + personalOf(draft) > 24 * 60 ? "That adds up to more than 24 hours. Check your times." : "";
+}
+function saveLog() {
+  const { p, date, from } = V;
+  if (!S.entries[date]) S.entries[date] = [null, null];
+  S.entries[date][p] = Object.assign({}, draft, { at: new Date().toISOString() });
+  save();
+  draft = null; dirty = false;
+  go(from === "day" ? { name: "day", n: dayNum(date), saved: { p, date } } : { name: "home", saved: { p, date } });
+}
+
+/* Results */
+function stats() { return statsFor(1, CONFIG.days); }
+function statsFor(from, to) {
+  const dates = revealedDates().filter(d => { const n = dayNum(d); return n >= from && n <= to; });
+  const t = [0, 1].map(() => ({ unpaid: 0, paid: 0, personal: 0, cat: {}, mental: {}, fair: {}, more: 0, ticks: 0 }));
+  const help = { paid: 0, others: 0 };
+  let even = 0;
+  dates.forEach(d => {
+    const e = S.entries[d], u = [unpaidOf(e[0]), unpaidOf(e[1])];
+    const hp = new Set([...(e[0].helped || []), ...(e[1].helped || [])]);
+    if (hp.has("paid")) help.paid++;
+    if (hp.has("others")) help.others++;
+    if (u[0] > u[1]) t[0].more++; else if (u[1] > u[0]) t[1].more++; else even++;
+    [0, 1].forEach(p => {
+      const x = e[p];
+      t[p].unpaid += u[p];
+      t[p].paid += x.paid || 0;
+      t[p].personal += personalOf(x);
+      CONFIG.categories.forEach(c => { t[p].cat[c.id] = (t[p].cat[c.id] || 0) + (x.m[c.id] || 0); });
+      (x.mental || []).forEach(id => { t[p].mental[id] = (t[p].mental[id] || 0) + 1; t[p].ticks++; });
+      if (x.fair) t[p].fair[x.fair] = (t[p].fair[x.fair] || 0) + 1;
+    });
+  });
+  return { dates, t, even, help };
+}
+function dayChartHTML(from = 1, to = CONFIG.days) {
+  const k = to - from + 1, wk = k <= 7;
+  let cols = "", labels = "";
+  for (let n = from; n <= to; n++) {
+    const e = S.entries[dateOf(n)];
+    if (e && e[0] && e[1]) {
+      const a = unpaidOf(e[0]), b = unpaidOf(e[1]), pa = share(a, b) * 100;
+      cols += `<span class="col" title="Day ${n}: ${esc(nm(0))} ${fmtMin(a)}, ${esc(nm(1))} ${fmtMin(b)}"><i class="b" style="height:${100 - pa}%"></i><i class="a" style="height:${pa}%"></i></span>`;
+    } else cols += `<span class="col" title="Day ${n}: not complete"></span>`;
+    if (wk) labels += `<span>${wdShort(dateOf(n))}</span>`;
+  }
+  const style = `grid-template-columns:repeat(${k},minmax(0,1fr))${wk ? ";gap:8px" : ""}`;
+  return `<div class="days" style="${style}" role="img" aria-label="Each day’s split of unpaid work, day ${from} to ${to}">${cols}</div>` +
+    (wk ? `<div class="days-labels" style="${style}" aria-hidden="true">${labels}</div>` : `<div class="days-axis"><span>Day ${from}</span><span>Day ${to}</span></div>`);
+}
+
+/* Weekly summary */
+function viewWeek() {
+  const w = V.w, wk = WEEKS[w - 1], from = V.from || "results";
+  const back = `<button class="btn link back" data-act="tab" data-to="${from}">Back to ${from === "home" ? "today" : "results"}</button>`;
+  const prevReady = w > 1, nextReady = w < WEEKS.length && weekReady(w + 1);
+  const wkNav = `<div class="wk-nav">${prevReady ? `<button class="btn ghost small" data-act="open-week" data-w="${w - 1}" data-from="${from}">Week ${w - 1}</button>` : "<span></span>"}${nextReady ? `<button class="btn ghost small" data-act="open-week" data-w="${w + 1}" data-from="${from}">Week ${w + 1}</button>` : ""}</div>`;
+  const head = `${back}<p class="eyebrow">Week ${w} summary</p><h1 tabindex="-1">Week ${w}</h1><p class="lede">Days ${wk.from}–${wk.to}, ${rangeText(wk.from, wk.to)}.</p>`;
+  if (!weekReady(w)) return `<section>${head}<p class="empty-note">This summary is ready after day ${wk.to}.</p></section>`;
+  const st = statsFor(wk.from, wk.to), n = st.dates.length;
+  if (!n) return `<section>${head}<p class="empty-note">You didn’t both log any day this week, so there’s nothing to sum up yet. You can still fill in missed days from the calendar.</p>${wkNav}</section>`;
+
+  const [A, B] = st.t;
+  const pa = Math.round(share(A.unpaid, B.unpaid) * 100), lead = pa >= 50 ? 0 : 1, leadPct = Math.max(pa, 100 - pa);
+  const isEven = Math.abs(pa - 50) <= 5;
+  const headline = !(A.unpaid + B.unpaid) ? "No unpaid work was logged this week."
+    : isEven ? "You shared the unpaid work almost evenly this week." : `${esc(nm(lead))} did ${leadPct}% of the unpaid work this week.`;
+
+  // Change since last week
+  let change = "";
+  if (w > 1) {
+    const pw = WEEKS[w - 2], ps = statsFor(pw.from, pw.to);
+    if (ps.dates.length) {
+      const ppa = Math.round(share(ps.t[0].unpaid, ps.t[1].unpaid) * 100);
+      const phrase = evenPhrase(ppa, pa);
+      change = `<section class="section"><h2>Since last week</h2>
+        <p class="headline" style="font-size:1.2rem;margin-bottom:14px">${phrase === "about as even" ? `About as even as week ${w - 1}.` : `${cap(phrase)} than week ${w - 1}.`}</p>
+        ${legendRow()}<ul class="cmp-list">${cmpRow(`Week ${w - 1}`, ps.t[0].unpaid, ps.t[1].unpaid, pctFmt(ps.t[0].unpaid, ps.t[1].unpaid))}${cmpRow(`Week ${w}`, A.unpaid, B.unpaid, pctFmt(A.unpaid, B.unpaid))}</ul></section>`;
+    }
+  }
+
+  // Daily averages
+  const avgRow = (label, k) => `<tr><th scope="row">${label}</th><td>${fmtMin(round5(A[k] / n))}</td><td>${fmtMin(round5(B[k] / n))}</td></tr>`;
+  const avg = `<section class="section"><h2>An average day this week</h2>
+    <table class="avg"><thead><tr><th scope="col"><span class="sr">Measure</span></th><th scope="col"><span class="who"><i class="dot pa"></i>${esc(nm(0))}</span></th><th scope="col"><span class="who"><i class="dot pb"></i>${esc(nm(1))}</span></th></tr></thead>
+    <tbody>${avgRow("Unpaid work", "unpaid")}${A.paid || B.paid ? avgRow("Paid work", "paid") : ""}${A.personal || B.personal ? avgRow("Time for yourself", "personal") : ""}</tbody></table></section>`;
+
+  // Highlights
+  const hl = [];
+  const tasks = CONFIG.categories.filter(c => !c.secondary && !c.personal)
+    .map(c => ({ c, a: A.cat[c.id] || 0, b: B.cat[c.id] || 0 }))
+    .filter(x => x.a + x.b >= 60)
+    .map(x => ({ ...x, pa: Math.round(share(x.a, x.b) * 100) }));
+  const lop = [...tasks].sort((x, y) => Math.abs(y.pa - 50) - Math.abs(x.pa - 50))[0];
+  if (lop && Math.abs(lop.pa - 50) >= 15) {
+    const who = lop.pa > 50 ? 0 : 1;
+    hl.push(["Most one-sided task", `${longLabel(lop.c)}: ${esc(nm(who))} did ${Math.max(lop.pa, 100 - lop.pa)}%.`]);
+  }
+  const shared = tasks.filter(x => Math.abs(x.pa - 50) <= 10 && x !== lop).sort((x, y) => (y.a + y.b) - (x.a + x.b))[0];
+  if (shared) hl.push(["Most shared task", `${longLabel(shared.c)}, split ${shared.pa}–${100 - shared.pa}.`]);
+  const dayShares = st.dates.map(d => { const e = S.entries[d], a = unpaidOf(e[0]), b = unpaidOf(e[1]); return { d, a, b, pa: Math.round(share(a, b) * 100) }; }).filter(x => x.a + x.b > 0);
+  if (dayShares.length >= 2) {
+    const best = [...dayShares].sort((x, y) => Math.abs(x.pa - 50) - Math.abs(y.pa - 50))[0];
+    hl.push(["Most even day", `${parse(best.d).toLocaleDateString("en-GB", { weekday: "long" })} (day ${dayNum(best.d)}), split ${best.pa}–${100 - best.pa}.`]);
+  }
+  const fgap = round5(Math.abs(A.personal - B.personal) / n);
+  if (fgap >= 10) { const more = A.personal > B.personal ? 0 : 1; hl.push(["Free time", `${esc(nm(more))} had about ${fmtMin(fgap)} more time for themselves a day.`]); }
+  if (A.ticks + B.ticks) {
+    const more = A.ticks >= B.ticks ? 0 : 1;
+    hl.push(["Invisible work", A.ticks === B.ticks ? `You each ticked ${A.ticks} planning and remembering jobs.` : `${esc(nm(more))} ticked ${st.t[more].ticks} planning and remembering jobs, ${esc(nm(1 - more))} ${st.t[1 - more].ticks}.`]);
+  }
+  const helpTxt = [st.help.paid ? `paid help came on ${days(st.help.paid)}` : "", st.help.others ? `family or friends helped on ${days(st.help.others)}` : ""].filter(Boolean);
+  if (helpTxt.length) hl.push(["Other help", `${cap(helpTxt.join(", and "))}.`]);
+  const feelTxt = [0, 1].map(p => {
+    const f = st.t[p].fair, parts = CONFIG.fairness.filter(x => f[x.value]).map(x => `${x.label.toLowerCase()} on ${days(f[x.value])}`);
+    return parts.length ? `${esc(nm(p))} felt it was ${parts.join(", ")}.` : "";
+  }).filter(Boolean);
+  if (feelTxt.length) hl.push(["How it felt", feelTxt.join(" ")]);
+
+  // Try next week
+  let tryNext = "";
+  const tryLabel = w < WEEKS.length ? "Try next week:" : "Try in the final days:";
+  if ((w < WEEKS.length || EXTRA) && currentDay() <= CONFIG.days) {
+    if (!isEven && A.unpaid + B.unpaid) {
+      const big = tasks.filter(x => (lead === 0 ? x.a - x.b : x.b - x.a) > 0)
+        .sort((x, y) => Math.abs(y.a - y.b) - Math.abs(x.a - x.b))[0];
+      const shift = round5(Math.abs(A.unpaid - B.unpaid) / 2 / n);
+      tryNext = `<p class="insight"><b>${tryLabel}</b> ${big ? `${esc(nm(1 - lead))} takes on more ${esc(longLabel(big.c).toLowerCase())}, where ${esc(nm(lead))} did about ${fmtMin(round5(Math.abs(big.a - big.b) / n))} more a day. ` : ""}Moving about ${fmtMin(shift)} of unpaid work a day from ${esc(nm(lead))} to ${esc(nm(1 - lead))} would make it even.</p>`;
+    } else if (A.unpaid + B.unpaid) {
+      tryNext = `<p class="insight"><b>${tryLabel}</b> keep the same split going.</p>`;
+    }
+  }
+
+  const tasksSorted = tasks.sort((x, y) => (y.a + y.b) - (x.a + x.b));
+  const nextLine = w < WEEKS.length
+    ? (weekReady(w + 1) ? "" : `Your week ${w + 1} summary is ready after day ${WEEKS[w].to}, ${longDate(dateOf(WEEKS[w].to))}.`)
+    : (monthReady() ? `<button class="btn link" data-act="tab" data-to="results" style="padding:0 2px;min-height:0;color:var(--ink)">Open the month summary</button>` : `Your month summary is ready after day ${CONFIG.days}, ${longDate(dateOf(CONFIG.days))}.`);
+
+  return `<section>
+    ${head}
+    <p class="headline">${headline}</p>
+    ${duoHTML(A.unpaid, B.unpaid, { big: true })}
+    <p class="help" style="margin:12px 0 0">Based on ${n} of 7 days you both logged.</p>
+    <div style="height:34px"></div>
+    ${change}
+    ${tryNext ? `<div style="margin:-14px 0 34px">${tryNext}</div>` : ""}
+    ${avg}
+    ${hl.length ? `<section class="section"><h2>This week’s highlights</h2><ul class="hl">${hl.map(h => `<li><b>${h[0]}</b>${h[1]}</li>`).join("")}</ul></section>` : ""}
+    <section class="section"><h2>Day by day</h2>
+      <p class="help">${esc(nm(0))}’s share at the bottom, ${esc(nm(1))}’s on top. The dashed line is an even split.</p>
+      ${dayChartHTML(wk.from, wk.to)}</section>
+    ${tasksSorted.length ? `<section class="section"><h2>Who did what</h2>${legendRow()}<ul class="cmp-list">${tasksSorted.map(x => cmpRow(longLabel(x.c), x.a, x.b)).join("")}</ul></section>` : ""}
+    ${nextLine ? `<p class="help">${nextLine}</p>` : ""}
+    ${wkNav}
+  </section>`;
+}
+function pctFmt(a, b) {
+  const pa = Math.round(share(a, b) * 100);
+  return x => (x === a ? pa : 100 - pa) + "%";
+}
+function viewResults() {
+  const st = stats(), n = st.dates.length, cd = currentDay();
+  if (!n) return `<section><h1 tabindex="-1">Results</h1><p class="lede">Your results start once you’ve both logged the same day.</p><button class="btn primary" data-act="tab" data-to="home">Go to today</button></section>`;
+  const final = monthReady();
+  const [A, B] = st.t, tot = A.unpaid + B.unpaid;
+  const pa = Math.round(share(A.unpaid, B.unpaid) * 100), pb = 100 - pa;
+  const lead = pa > 50 ? 0 : 1;
+  let headline;
+  if (!tot) headline = "No unpaid work logged yet.";
+  else if (Math.abs(pa - 50) <= 5) headline = final ? "You split the unpaid work almost evenly." : "So far, you’re splitting the unpaid work almost evenly.";
+  else headline = `${esc(nm(lead))} ${final ? "did" : "is doing"} ${Math.max(pa, pb)}% of the unpaid work${final ? "" : " so far"}.`;
+  const shift = round5(Math.abs(A.unpaid - B.unpaid) / 2 / n);
+  const evenOut = Math.abs(pa - 50) > 5 && shift >= 5
+    ? `<p class="insight">To even it out, about <b>${fmtMin(shift)} a day</b> of unpaid work would need to move from ${esc(nm(lead))} to ${esc(nm(1 - lead))}.</p>` : "";
+
+  const g = S.setup.guesses, showGuess = final || S.setup.guessesRevealed;
+  const guesses = showGuess
+    ? `<ul class="guesses">${[0, 1].map(p => {
+        const actual = p ? pb : pa, diff = actual - g[p];
+        const verdict = Math.abs(diff) <= 3 ? "Close to spot on." : diff > 0 ? `${esc(nm(p))} does ${Math.abs(diff)} points more than they thought.` : `${esc(nm(p))} does ${Math.abs(diff)} points less than they thought.`;
+        return `<li><span class="who"><i class="dot ${pc(p)}"></i><b>${esc(nm(p))}</b></span><p>Guessed <b>${g[p]}%</b>, actually <b>${actual}%</b>. ${verdict}</p></li>`;
+      }).join("")}</ul>`
+    : `<p class="help" style="margin:0 0 12px">You each guessed your share at the start. The guesses are revealed after day ${CONFIG.days}.</p><button class="btn ghost small" data-act="reveal-guesses">Reveal them now</button>`;
+
+  const workload = A.paid || B.paid ? `<section class="section"><h2>Paid and unpaid work together</h2>
+      ${duoHTML(A.paid + A.unpaid, B.paid + B.unpaid)}
+      <ul class="feel" style="margin-top:14px">${[0, 1].map(p => `<li><i class="dot ${pc(p)}"></i><span><b>${esc(nm(p))}:</b> about ${fmtMin(round5((st.t[p].paid + st.t[p].unpaid) / n))} of work a day, ${fmtMin(round5(st.t[p].paid / n))} paid and ${fmtMin(round5(st.t[p].unpaid / n))} unpaid.</span></li>`).join("")}</ul></section>` : "";
+
+  const cats = CONFIG.categories.filter(c => !c.secondary && !c.personal && (A.cat[c.id] || 0) + (B.cat[c.id] || 0) > 0)
+    .sort((x, y) => ((A.cat[y.id] || 0) + (B.cat[y.id] || 0)) - ((A.cat[x.id] || 0) + (B.cat[x.id] || 0)));
+  const sec = CONFIG.categories.filter(c => c.secondary && (A.cat[c.id] || 0) + (B.cat[c.id] || 0) > 0);
+  const ml = CONFIG.mentalLoad.filter(m => (A.mental[m.id] || 0) + (B.mental[m.id] || 0) > 0);
+  const anyFeel = [0, 1].some(p => Object.keys(st.t[p].fair).length);
+  const pcats = CONFIG.categories.filter(c => c.personal && (A.cat[c.id] || 0) + (B.cat[c.id] || 0) > 0);
+  let personalSec = "";
+  if (A.personal || B.personal) {
+    const gap = round5(Math.abs(A.personal - B.personal) / n), more = A.personal > B.personal ? 0 : 1;
+    personalSec = `<section class="section"><h2>Time for yourself</h2>
+      <p class="help">Hobbies, sport, rest and wellbeing. Not counted as work.</p>
+      ${duoHTML(A.personal, B.personal)}
+      <ul class="feel" style="margin-top:14px">${[0, 1].map(p => `<li><i class="dot ${pc(p)}"></i><span><b>${esc(nm(p))}:</b> about ${fmtMin(round5(st.t[p].personal / n))} a day for themselves.</span></li>`).join("")}</ul>
+      ${gap >= 10 ? `<p class="insight">${esc(nm(more))} had about <b>${fmtMin(gap)} more free time a day</b> than ${esc(nm(1 - more))}.</p>` : ""}
+      ${pcats.length ? `<div style="height:22px"></div>${legendRow()}<ul class="cmp-list">${pcats.map(c => cmpRow(c.label, A.cat[c.id] || 0, B.cat[c.id] || 0)).join("")}</ul>` : ""}
+    </section>`;
+  }
+
+  // Week by week
+  const wrows = WEEKS.map(wk => ({ ...wk, ready: weekReady(wk.w), s: statsFor(wk.from, wk.to) }));
+  const withData = wrows.filter(r => r.ready && r.s.dates.length);
+  let trend = "";
+  if (withData.length >= 2) {
+    const f = withData[0], l = withData[withData.length - 1];
+    const fp = Math.round(share(f.s.t[0].unpaid, f.s.t[1].unpaid) * 100), lp = Math.round(share(l.s.t[0].unpaid, l.s.t[1].unpaid) * 100);
+    const ph = evenPhrase(fp, lp);
+    trend = `<p class="headline" style="font-size:1.2rem;margin-bottom:14px">${ph === "about as even" ? `From week ${f.w} to week ${l.w}, the split stayed about the same.` : `Week ${l.w} was ${ph} than week ${f.w}.`}</p>
+      <p class="help" style="margin:-6px 0 14px">${esc(nm(0))}’s share went from ${fp}% to ${lp}%.</p>`;
+  }
+  const weekByWeek = `<section class="section"><h2>Week by week</h2>${trend}
+    <ul class="sums">${wrows.map(r => {
+      let right;
+      if (!r.ready) right = `<span class="wk-note">After day ${r.to}</span>`;
+      else if (!r.s.dates.length) right = `<span class="wk-note">No days logged</span>`;
+      else {
+        const p0 = Math.round(share(r.s.t[0].unpaid, r.s.t[1].unpaid) * 100);
+        right = `<span class="sum-r"><span class="split mini" role="img" aria-label="${esc(`${nm(0)} ${p0}%, ${nm(1)} ${100 - p0}%`)}"><i style="width:${p0}%"></i></span>${p0}–${100 - p0}</span>`;
+      }
+      const inner = `<span class="sum-l"><b>Week ${r.w}</b><small>${rangeText(r.from, r.to)}</small></span>${right}`;
+      return `<li>${r.ready ? `<button class="sum" data-act="open-week" data-w="${r.w}" data-from="results" aria-label="Open the week ${r.w} summary">${inner}</button>` : `<div class="sum off">${inner}</div>`}</li>`;
+    }).join("")}</ul>
+    ${EXTRA ? `<p class="help" style="margin:10px 0 0">Days ${EXTRA.from}–${EXTRA.to} are included in the month summary.</p>` : ""}</section>`;
+
+  // Help at home
+  const su = S.setup, hasPaid = (su.paidHelp || []).length, hasOther = (su.otherHelp || []).length;
+  let helpSec = "";
+  if (hasPaid || hasOther || st.help.paid || st.help.others) {
+    const items = [];
+    if (hasPaid || st.help.paid) items.push(`<li><b>Paid help</b>${hasPaid ? `${esc(su.paidHelp.join(", "))}${su.paidHelpFreq ? `, ${esc(su.paidHelpFreq.toLowerCase())}` : ""}. ` : ""}Came on ${st.help.paid} of the ${days(n)} you both logged.</li>`);
+    if (hasOther || st.help.others) items.push(`<li><b>Help from family or friends</b>${hasOther ? `${esc(su.otherHelp.join(", "))}${su.otherHelpLives === "yes" ? ", living with you" : ""}${su.otherHelpFreq ? `, ${esc(su.otherHelpFreq.toLowerCase())}` : ""}. ` : ""}Helped on ${st.help.others} of the ${days(n)} you both logged.</li>`);
+    helpSec = `<section class="section"><h2>Help at home</h2><p class="help">Work done by others isn’t in your totals, but it shapes how much is left for the two of you.</p><ul class="hl">${items.join("")}</ul></section>`;
+  }
+
+  return `<section>
+    ${final ? `<p class="eyebrow">Month summary</p>` : ""}
+    <h1 tabindex="-1">${final ? `Your ${CONFIG.days} days` : "Results so far"}</h1>
+    <p class="lede">${final ? `${rangeText(1, CONFIG.days)}. Based on ${days(n)} you both logged.` : `Based on ${days(n)} you’ve both logged out of ${CONFIG.days}. Your month summary is ready after day ${CONFIG.days}.`}</p>
+    <p class="headline">${headline}</p>
+    ${duoHTML(A.unpaid, B.unpaid, { big: true })}
+    <ul class="feel" style="margin-top:14px">${[0, 1].map(p => `<li><i class="dot ${pc(p)}"></i><span><b>${esc(nm(p))}:</b> about ${fmtMin(round5(st.t[p].unpaid / n))} of unpaid work a day.</span></li>`).join("")}</ul>
+    ${evenOut}
+    <div style="height:34px"></div>
+    ${weekByWeek}
+    <section class="section"><h2>Your guesses</h2>${guesses}</section>
+    ${workload}
+    ${personalSec}
+    ${helpSec}
+    ${cats.length ? `<section class="section"><h2>Who did what</h2>${legendRow()}<ul class="cmp-list">${cats.map(c => cmpRow(longLabel(c), A.cat[c.id] || 0, B.cat[c.id] || 0)).join("")}</ul></section>` : ""}
+    ${sec.length ? `<section class="section"><h2>On duty with children</h2><p class="help">Time in charge of children while doing other things. Not included in the totals above.</p>${sec.map(c => duoHTML(A.cat[c.id] || 0, B.cat[c.id] || 0)).join("")}</section>` : ""}
+    ${ml.length ? `<section class="section"><h2>Invisible work</h2><p class="help">How many days each of you was the one who…</p>${legendRow()}<ul class="cmp-list">${ml.map(m => cmpRow(cap(m.label), A.mental[m.id] || 0, B.mental[m.id] || 0, days)).join("")}</ul></section>` : ""}
+    <section class="section"><h2>Day by day</h2>
+      <p class="help">Each bar is one day: ${esc(nm(0))}’s share at the bottom, ${esc(nm(1))}’s on top. The dashed line is an even split.</p>
+      ${dayChartHTML()}
+      <p style="margin:14px 0 0">${esc(nm(0))} did more on ${days(A.more)}, ${esc(nm(1))} on ${days(B.more)}${st.even ? `, and ${days(st.even)} ${st.even === 1 ? "was" : "were"} even` : ""}.</p>
+    </section>
+    ${anyFeel ? `<section class="section"><h2>How the days felt</h2><ul class="feel">${[0, 1].map(p => {
+      const f = st.t[p].fair, parts = CONFIG.fairness.filter(x => f[x.value]).map(x => `${x.label.toLowerCase()} on ${days(f[x.value])}`);
+      return parts.length ? `<li><i class="dot ${pc(p)}"></i><span><b>${esc(nm(p))}</b> felt it was ${parts.join(", ")}.</span></li>` : "";
+    }).join("")}</ul></section>` : ""}
+    <details class="data"><summary>Show all your data</summary><pre>${esc(JSON.stringify(S, null, 2))}</pre></details>
+  </section>`;
+}
+
+/* Settings */
+function viewSettings() {
+  const cd = currentDay();
+  return `<section>
+    <h1 tabindex="-1">Settings</h1>
+    <section class="section"><h2>Names</h2>
+      <div class="q"><label class="legend" for="n0"><i class="dot pa"></i>First person</label><input class="text" id="n0" maxlength="24" autocomplete="off" value="${esc(nm(0))}"></div>
+      <div class="q"><label class="legend" for="n1"><i class="dot pb"></i>Second person</label><input class="text" id="n1" maxlength="24" autocomplete="off" value="${esc(nm(1))}"></div>
+      <p class="error" id="err" role="alert"></p>
+      <button class="btn ghost small" data-act="save-names">Save names</button><p class="note-ok" id="names-ok" role="status"></p>
+    </section>
+    <section class="section"><h2>About you</h2>
+      ${[0, 1].map(p => `<h3 class="sub-h"><i class="dot ${pc(p)}"></i>${esc(nm(p))}</h3>${personHTML(p, S.setup.people[p])}`).join("")}
+    </section>
+    <section class="section"><h2>Your home</h2>
+      <p class="help" style="margin-top:-6px">Changes which tasks appear when you log. Earlier entries are kept.</p>
+      ${householdHTML(S.setup, false)}
+    </section>
+    <section class="section"><h2>Help at home</h2>
+      ${helpHTML(S.setup)}
+    </section>
+    <section class="section"><h2>Dates</h2>
+      <p>Day 1 ${cd >= 1 ? "was" : "is"} ${longDate(S.setup.startDate)}. Day ${CONFIG.days} ${cd > CONFIG.days ? "was" : "is"} ${longDate(dateOf(CONFIG.days))}.</p>
+    </section>
+    <section class="section"><h2>Your data</h2>
+      ${LINKS && S.hid ? `<p>Your progress is saved with your personal link, so you can open it on any phone or computer. Keep the link to yourselves.</p>
+      ${S.link ? `<div class="q"><label class="legend" for="mylink">Your personal link</label><input class="text" id="mylink" readonly value="${esc(S.link)}"></div>` : ""}` : `<p>Everything is saved in this browser on this device. Clearing your browser data deletes it.</p>`}
+      ${S.hid ? `<p>Your answers are also shared anonymously with ${esc(CONFIG.collectedBy)}, without your names. Your code is <b>${esc(S.hid)}</b>. Quote it if you want your shared answers removed. Deleting the challenge here doesn’t remove answers already shared${LINKS ? " or stop the reminders" : ""}.</p>` : ""}
+      <button class="btn ghost danger" data-act="reset">Delete the challenge</button>
+    </section>
+  </section>`;
+}
+
+/* ---------------- Render and navigation ---------------- */
+function setHdr() { document.documentElement.style.setProperty("--hdr", header.offsetHeight + "px"); }
+if ("ResizeObserver" in window) new ResizeObserver(setHdr).observe(header); else window.addEventListener("resize", setHdr);
+
+function renderChrome() {
+  const p = document.getElementById("progress");
+  if (V.name === "setup") {
+    const cur = setupStage(V.step) + 1;
+    p.hidden = false;
+    p.innerHTML = SETUP_STEPS.map((s, i) => {
+      const n = i + 1, cls = n < cur ? "is-done" : n === cur ? "is-current" : "";
+      return `<li class="${cls}"${n === cur ? ' aria-current="step"' : ""}><span class="bar" aria-hidden="true"></span><span class="lbl">${s}</span></li>`;
+    }).join("");
+  } else { p.hidden = true; p.innerHTML = ""; }
+  const inApp = !!S.setup && ["home", "day", "week", "results", "settings"].includes(V.name);
+  tabbar.hidden = !inApp;
+  tabbar.querySelectorAll(".tab").forEach(t => {
+    const on = t.dataset.to === V.name || (V.name === "day" && t.dataset.to === "home") || (V.name === "week" && t.dataset.to === (V.from || "results"));
+    if (on) t.setAttribute("aria-current", "page"); else t.removeAttribute("aria-current");
+  });
+  document.body.classList.toggle("pad-bottom", inApp || V.name === "log");
+  setHdr();
+}
+function viewOpening() {
+  return `<section><h1 tabindex="-1">Opening your challenge…</h1><p class="lede">This takes a few seconds.</p></section>`;
+}
+const VIEWS = { opening: viewOpening, welcome: viewWelcome, setup: viewSetup, home: viewHome, day: viewDay, week: viewWeek, log: viewLog, results: viewResults, settings: viewSettings };
+function render() {
+  if (S.setup) {
+    let changed = false;
+    if (V.name === "week" && weekReady(V.w) && !S.seen["w" + V.w]) { S.seen["w" + V.w] = true; changed = true; }
+    if (V.name === "results" && monthReady() && !S.seen.month) { S.seen.month = true; changed = true; }
+    if (changed) save();
+  }
+  renderChrome();
+  main.innerHTML = VIEWS[V.name]();
+}
+function go(v) {
+  if (v) V = v;
+  render();
+  window.scrollTo(0, 0);
+  const h = main.querySelector("h1");
+  if (h) h.focus({ preventScroll: true });
+}
+function rerenderKeepScroll() { const y = window.scrollY; render(); window.scrollTo(0, y); }
+function showErr(msg) { const e = main.querySelector("#err"); if (e) e.textContent = msg; }
+function clearErrs() {
+  main.querySelectorAll(".error").forEach(e => (e.textContent = ""));
+  main.querySelectorAll(".invalid").forEach(q => q.classList.remove("invalid"));
+}
+function checkNames(a, b) {
+  if (!a || !b) { showErr("Add both names to continue."); main.querySelector(a ? "#n1" : "#n0").focus(); return false; }
+  if (a.toLowerCase() === b.toLowerCase()) { showErr("Use two different names so you can tell your entries apart."); main.querySelector("#n1").focus(); return false; }
+  return true;
+}
+
+function startSetup() {
+  draft = { names: ["", ""], emails: [""], people: [{}, {}], country: "", area: null, kids: null, adultCare: null, pets: null, paidHelp: null, paidHelpFreq: null, otherHelp: null, otherHelpLives: null, otherHelpFreq: null, start: "today", guesses: [50, 50] };
+  go({ name: "setup", step: 0 });
+}
+function flagMissing(miss) {
+  if (!miss.length) return true;
+  miss.forEach(m => main.querySelector("#" + m[0]).classList.add("invalid"));
+  showErr("Please answer: " + miss.map(m => m[1]).join(", ") + ".");
+  const f = main.querySelector(`#${miss[0][0]} input, #${miss[0][0]} select`);
+  if (f) f.focus();
+  return false;
+}
+function setupNext() {
+  clearErrs();
+  const st = V.step;
+  if (st === 0) {
+    draft.names = [main.querySelector("#n0").value.trim(), main.querySelector("#n1").value.trim()];
+    if (!checkNames(draft.names[0], draft.names[1])) return;
+    if (LINKS) {
+      draft.emails = [main.querySelector("#e0").value.trim()];
+      if (!EMAIL_RE.test(draft.emails[0])) { showErr(draft.emails[0] ? "Check the email address. It doesn’t look complete." : "Add an email to continue."); main.querySelector("#e0").focus(); return; }
+    }
+  } else if (st === 1 || st === 2) {
+    const p = st - 1;
+    if (!flagMissing(CONFIG.personFields.filter(f => !draft.people[p][f.id]).map(f => [`q-${f.id}-${p}`, f.question.toLowerCase()]))) return;
+  } else if (st === 3) {
+    const miss = [];
+    if (!draft.country) miss.push(["q-country", "country"]);
+    if (!draft.area) miss.push(["q-area", "kind of place"]);
+    if (draft.kids === null) miss.push(["q-kids", "children"]);
+    if (draft.adultCare === null) miss.push(["q-adult", "caring for an adult"]);
+    if (draft.pets === null) miss.push(["q-pets", "pets"]);
+    if (!flagMissing(miss)) return;
+  } else if (st === 4) {
+    const miss = [];
+    if (draft.paidHelp === null) miss.push(["q-paidHelp", "paid help"]);
+    else if (draft.paidHelp.length && !draft.paidHelpFreq) miss.push(["q-paidHelpFreq", "how often paid help comes"]);
+    if (draft.otherHelp === null) miss.push(["q-otherHelp", "help from other adults"]);
+    else if (draft.otherHelp.length) {
+      if (!draft.otherHelpLives) miss.push(["q-otherHelpLives", "whether they live with you"]);
+      if (!draft.otherHelpFreq) miss.push(["q-otherHelpFreq", "how often they help"]);
+    }
+    if (!flagMissing(miss)) return;
+  } else if (st === 5) {
+    if (CONFIG.collectUrl && !draft.consent) { flagMissing([["q-consent", "sharing your answers (tick the box to take part)"]]); return; }
+  } else if (st === 8) {
+    const start = draft.start === "tomorrow" ? addDays(todayISO(), 1) : todayISO();
+    S = { v: 1, hid: CONFIG.collectUrl ? newCode() : null, entries: {}, seen: {}, setup: {
+      names: draft.names, emails: LINKS ? draft.emails : undefined, people: draft.people, country: draft.country, area: draft.area,
+      kids: draft.kids, adultCare: draft.adultCare, pets: draft.pets,
+      paidHelp: draft.paidHelp, paidHelpFreq: draft.paidHelpFreq, otherHelp: draft.otherHelp, otherHelpLives: draft.otherHelpLives, otherHelpFreq: draft.otherHelpFreq,
+      startDate: start, guesses: draft.guesses, guessesRevealed: false, consent: !!draft.consent, createdAt: new Date().toISOString()
+    } };
+    save(); draft = null;
+    go({ name: "home", started: true });
+    return;
+  }
+  V.step = st + 1;
+  go();
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-act]");
+  if (!b) return;
+  const a = b.dataset.act;
+  switch (a) {
+    case "setup": startSetup(); break;
+    case "setup-back":
+      if (V.step === 0) go({ name: "welcome" });
+      else { V.step = V.step - 1; go(); }
+      break;
+    case "setup-next": setupNext(); break;
+    case "tab": go({ name: b.dataset.to }); break;
+    case "open-day": go({ name: "day", n: Number(b.dataset.n) }); break;
+    case "open-week": go({ name: "week", w: Number(b.dataset.w), from: b.dataset.from || "results" }); break;
+    case "log": openLog(Number(b.dataset.p), b.dataset.date, b.dataset.from); break;
+    case "inc": bump(b.dataset.cat, 1); break;
+    case "dec": bump(b.dataset.cat, -1); break;
+    case "copy-last": {
+      const src = S.entries[b.dataset.from][V.p];
+      draft.m = Object.assign({}, src.m); draft.paid = src.paid || 0; dirty = true;
+      V.copied = dayNum(b.dataset.from);
+      rerenderKeepScroll();
+      break;
+    }
+    case "save-log": saveLog(); break;
+    case "cancel-log":
+      if (dirty && !b.dataset.armed) { b.dataset.armed = "1"; b.textContent = "Discard my changes"; return; }
+      draft = null; dirty = false;
+      go(V.from === "day" ? { name: "day", n: dayNum(V.date) } : { name: "home" });
+      break;
+    case "reveal-guesses": S.setup.guessesRevealed = true; save(); rerenderKeepScroll(); break;
+    case "save-names": {
+      clearErrs();
+      const n0 = main.querySelector("#n0").value.trim(), n1 = main.querySelector("#n1").value.trim();
+      if (!checkNames(n0, n1)) return;
+      S.setup.names = [n0, n1]; save();
+      main.querySelector("#names-ok").textContent = "Names saved.";
+      break;
+    }
+    case "reset":
+      if (!b.dataset.armed) { b.dataset.armed = "1"; b.textContent = "Tap again to delete everything"; return; }
+      try { localStorage.removeItem(KEY); } catch (err) {}
+      S = freshState(); go({ name: "welcome" });
+      break;
+  }
+});
+
+function exclusive(input, soloValue) {
+  if (!input.checked) return;
+  main.querySelectorAll(`input[name="${input.name}"]`).forEach(i => {
+    if (input.value === soloValue ? i !== input : i.value === soloValue) i.checked = false;
+  });
+}
+main.addEventListener("change", e => {
+  const t = e.target;
+  const q = t.closest(".q");
+  if (q && q.classList.contains("invalid")) { q.classList.remove("invalid"); const er = main.querySelector("#err"); if (er) er.textContent = ""; }
+  const target = V.name === "setup" ? draft : S.setup;
+  const pm = /^([a-z]+)-([01])$/.exec(t.name || "");
+  if (pm && CONFIG.personFields.some(f => f.id === pm[1])) {
+    target.people[Number(pm[2])][pm[1]] = t.value;
+    if (V.name === "settings") save();
+    return;
+  }
+  switch (t.name) {
+    case "country": case "area": target[t.name] = t.value; break;
+    case "paidHelp": case "otherHelp": {
+      exclusive(t, "none");
+      const vals = checkedVals(t.name);
+      target[t.name] = vals.includes("none") ? [] : vals.length ? vals : (V.name === "setup" ? null : []);
+      const has = !!(target[t.name] && target[t.name].length);
+      main.querySelector(t.name === "paidHelp" ? "#paid-more" : "#other-more").hidden = !has;
+      if (!has) { if (t.name === "paidHelp") target.paidHelpFreq = null; else { target.otherHelpLives = null; target.otherHelpFreq = null; } }
+      break;
+    }
+    case "paidHelpFreq": case "otherHelpLives": case "otherHelpFreq": target[t.name] = t.value; break;
+    case "helped": draft.helped = checkedVals("helped"); dirty = true; return;
+    case "kids": {
+      exclusive(t, "none");
+      const vals = checkedVals("kids");
+      target.kids = vals.includes("none") ? [] : vals.length ? vals : (V.name === "setup" ? null : []);
+      break;
+    }
+    case "adultCare": case "pets": target[t.name] = t.value === "yes"; break;
+    case "start": draft.start = t.value; return;
+    case "consent": draft.consent = t.checked; return;
+    case "mental": draft.mental = checkedVals("mental"); dirty = true; return;
+    case "fair": draft.fair = t.value; dirty = true; return;
+    default: return;
+  }
+  if (V.name === "settings") save();
+});
+main.addEventListener("input", e => {
+  const t = e.target;
+  if (t.id === "guess") {
+    const p = Number(t.dataset.p), g = Number(t.value);
+    draft.guesses[p] = g;
+    main.querySelector("#gv").textContent = g + "%";
+    main.querySelector("#gsplit i").style.width = (p ? 100 - g : g) + "%";
+  } else if (t.id === "note") { draft.note = t.value; dirty = true; }
+  else if (V.name === "setup" && (t.id === "n0" || t.id === "n1")) { draft.names[t.id === "n0" ? 0 : 1] = t.value; }
+  else if (V.name === "setup" && t.id === "e0") { draft.emails[0] = t.value; }
+});
+
+/* ---------------- Start ---------------- */
+function linkParams() {
+  return new Promise(r => {
+    try {
+      if (IN_APPS_SCRIPT && google.script.url) { google.script.url.getLocation(l => r((l && l.parameter) || {})); return; }
+      r(Object.fromEntries(new URLSearchParams(location.search)));
+    } catch (e) { r({}); }
+  });
+}
+function viewStopped() {
+  return `<section><h1 tabindex="-1">Reminders turned off</h1>
+    <p class="lede">You won’t get any more evening reminders. Your personal link still works whenever you want to log.</p>
+    ${S.setup ? `<div class="actions start"><button class="btn primary" data-act="tab" data-to="home">Back to the challenge</button></div>` : ""}</section>`;
+}
+VIEWS.stopped = viewStopped;
+async function boot() {
+  const params = LINKS ? await linkParams() : {};
+  const code = String(params.c || "").trim().toUpperCase();
+  if (CODE_RE.test(code) && params.stop) {
+    V = { name: "opening" }; render();
+    try { await callServer("stop", code); V = { name: "stopped" }; }
+    catch (e) { V = { name: "welcome", offline: true }; }
+    go();
+    return;
+  }
+  if (CODE_RE.test(code) && S.hid !== code) {
+    V = { name: "opening" }; render();
+    try {
+      const r = await callServer("getState", code);
+      if (r && r.state && r.state.setup) {
+        S = normalise(r.state); S.hid = code; S.link = r.link || ""; S.unsent = false;
+        store();
+        V = { name: "home", restored: true };
+      } else V = { name: "welcome", notFound: true };
+    } catch (e) { V = S.setup ? { name: "home" } : { name: "welcome", offline: true }; }
+    go();
+  } else {
+    render();
+    pullRemote();
+  }
+  if (S.unsent) setTimeout(sendNow, 2000);
+}
+boot();
+</script>
+</body>
+</html>
